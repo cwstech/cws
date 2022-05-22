@@ -1,0 +1,24 @@
+CREATE OR REPLACE FUNCTION f1(evt_place VARCHAR2)
+RETURN NUMBER
+IS
+--CURSOR C1 IS SELECT * FROM tblEvent_details WHERE Event_place=evt_place;
+BEGIN
+
+UPDATE tblEvent_Details 
+SET Event_total_amount=Event_total_amount+(Event_total_amount*10)/100
+WHERE Event_Place=Evt_Place;
+
+RETURN  evt_place;
+END;
+
+
+DECLARE
+evt_place VARCHAR2(20);
+CURSOR C1 IS SELECT * FROM tblEvent_details WHERE Event_place=evt_place;
+BEGIN
+evt_place:=f1('Vesu');
+FOR I IN C1
+LOOP
+DBMS_OUTPUT.PUT_LINE(I.Event_ID);
+END LOOP;
+END;

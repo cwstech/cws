@@ -1,0 +1,124 @@
+
+import java.util.*;
+class library
+{
+    String bookname;
+    void add()
+    {
+        Scanner dis=new Scanner(System.in);
+        System.out.println("enter the book name you want to add");
+        bookname=dis.nextLine();        
+    }
+    void display()
+    {
+        Scanner dis=new Scanner(System.in);
+        System.out.println("Bookname: "+bookname);        
+    }
+}
+
+class book extends library
+{
+    String author;
+    int isbn;
+    String available; 
+    void getdata1()
+    {
+        Scanner dis=new Scanner(System.in);
+        System.out.println("enter the author of the book");
+        author=dis.nextLine();
+        System.out.println("enter isbn pin of the book");
+        isbn=dis.nextInt();
+        System.out.println("enter if the book is available or not");
+        available=dis.nextLine();
+    }
+    void getdata2()
+    {
+        System.out.println("Author name    ISBN pin    Availbility of book");
+        System.out.println(author+"      "+isbn+"       "+available);
+    }
+}
+
+class members extends library
+{
+    int mem_id;
+    int issuedays;
+    String name;
+    int penaltycharge=0;
+    void getdata3()
+    {
+        Scanner dis=new Scanner(System.in);
+        System.out.println("enter member id");
+        mem_id=dis.nextInt();
+        System.out.println("enter member name");
+        name=dis.nextLine();
+        System.out.println("enter issue days");
+        issuedays=dis.nextInt();        
+    }
+    void penalty()
+    {
+        Scanner dis=new Scanner(System.in);
+        System.out.println("Member ID      Member Name      Issue Days");
+        System.out.println(mem_id+"      "+name+"      "+issuedays);
+        if(issuedays<=10)
+        {
+            System.out.println("penalty not charged");            
+        }
+        else
+        {
+            penaltycharge=penaltycharge+10;
+            System.out.println("penalty charged: "+penaltycharge);
+        }    
+    }
+}
+public class Exam 
+{
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) 
+    {                        
+        members a3=new members();
+        Scanner dis=new Scanner(System.in);        
+        System.out.println("1. To add books to library and know it's details");
+        System.out.println("2. To add members in library");
+        System.out.println("3. To know the penlaty charge");
+        System.out.println("enter number for of which you want details");
+        int n=dis.nextInt();
+        switch(n)
+        {
+            case 1:
+            {
+                library a1[]=new library[3];                
+                for(int i=0;i>=3;i++)
+                {
+                    a1[i].add();                    
+                }
+                for(int i=0;i>=3;i++)
+                {
+                    a1[i].display();                    
+                } 
+            }
+            break;
+            case 2:
+            { 
+                book a2[]=new book[2];
+                for(int i=0;i<=2;i++)
+                {
+                    a2[i].getdata1();                    
+                }                
+                for(int i=0;i<=2;i++)
+                {
+                    a2[i].getdata2();                    
+                }                                
+            }
+            break;
+            case 3:
+            {             
+                a3.getdata3();
+                a3.penalty();                
+            }
+            break;                    
+        }
+    }
+}

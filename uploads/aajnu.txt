@@ -1,0 +1,137 @@
+
+import java.util.Scanner;
+
+class Customer {
+
+    private String name, contact;
+    public int age;
+
+    public void getCustomers() {
+        System.out.println("Welcome! Enter following details: ");
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter your name:- ");
+        name = sc.nextLine();
+        System.out.println("Enter your contactNumber:- ");
+        contact = sc.nextLine();
+        System.out.println("Enter your age:- ");
+        age = sc.nextInt();
+    }
+
+    String rb() {
+        return name;
+    }
+
+    String num() {
+        return contact;
+    }
+
+}
+
+class account extends Customer {
+
+    int acc, bal;
+    int bale;
+    int dep;
+
+    public void deposit() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter Your Acc");
+        int dacc = sc.nextInt();
+        System.out.println("Enter Deposit amt:- ");
+        dep = sc.nextInt();
+        if (dacc != acc) {
+            System.out.println("Plase enter rigth AccNo");
+        } else {
+            int deposit = bale + dep;
+            System.out.println("Your total amount is:- " + deposit);
+        }
+
+    }
+
+    public void withdraw() {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter Your Acc");
+        int wacc = sc.nextInt();
+        System.out.println("Enter withdraw amt:- ");
+        bal = sc.nextInt();
+        if (wacc != acc) {
+            System.out.println("Plase enter rigth AccNo");
+        } else if (bale == 0) {
+            System.out.println("Your amount is 0");
+        } else {
+            int sub = bale - bal;
+            System.out.println("Your total amm is:- " + sub);
+        }
+
+    }
+
+    public void transfer() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter Your Acc");
+        int tacc = sc.nextInt();
+        System.out.println("Enter Transfer amt:- ");
+        bal = sc.nextInt();
+        
+        if(tacc != acc){
+            System.out.println("Plese enter rigth AccNo");
+        }else{
+           if(tacc == acc){
+              
+           }
+        }
+    }
+
+    public void getAcc() {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter AccNo:- ");
+        acc = sc.nextInt();
+        System.out.println("EnterYour Bal:- ");
+        bale = sc.nextInt();
+    }
+
+    public void dispaly() {
+        System.out.println(rb() + "\t " + num() + " \t" + age + "\t" + acc + "\t" + bale);
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Do you want to withdraw enter[1] for withdraw procedure and enter[2] for deposit procedure");
+        int a = sc.nextInt();
+
+        switch (a) {
+            case 1:
+                withdraw();
+                break;
+            case 2:
+                deposit();
+                break;
+            default:
+                System.out.println("Thank U");
+                break;
+        }
+
+    }
+
+}
+
+public class MENU {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter number of menu:- ");
+        int n = sc.nextInt();
+
+        account menu[] = new account[n];
+
+        for (int i = 0; i < n; i++) {
+            menu[i] = new account();
+            menu[i].getCustomers();
+            menu[i].getAcc();
+        }
+        System.out.println("Name \t Contact\t Age \t Accno \t bale");
+        for (int i = 0; i < n; i++) {
+            menu[i].dispaly();
+        }
+
+    }
+
+}

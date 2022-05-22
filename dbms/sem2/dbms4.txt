@@ -1,0 +1,185 @@
+create or replace procedure p_update(etype IN varchar2)
+IS
+ere event_details%rowtype;
+CURSOR c1 IS select * from event_details WHERE eventtype_id = etype;
+
+begin
+   UPDATE event_details 
+   set EVENT_TOTAL_AMOUNT = EVENT_TOTAL_AMOUNT+(EVENT_TOTAL_AMOUNT * 10)/100 WHERE EVENT_PLACE = 'Vesu';
+   open c1;
+   loop
+   fetch c1 into ere;
+   EXIT WHEN c1%notfound;
+   dbms_output.put_line(ere.EVENT_TOTAL_AMOUNT || ere.eventtype_id);
+   END loop;
+   close c1;
+end;
+
+begin 
+   p_update(19);
+end;
+
+-----------OutPut-------------
+Procedure created.
+0.08 seconds
+--
+4831.5319
+2750019
+
+Statement processed.
+0.00 seconds
+-----------------------------
+
+create or replace procedure findmaxmin
+IS
+maxamt number(10);
+minamt number(10);
+
+begin 
+  select max(EVENT_TOTAL_AMOUNT) into maxamt from  event_details;
+  dbms_output.put_line('Max Amount is:= '|| maxamt);
+  select min(EVENT_TOTAL_AMOUNT) into minamt from  event_details;
+  dbms_output.put_line('Min Amount is:= '|| minamt);
+end;
+begin
+  findmaxmin;
+end;
+----------------OutPut--------------------
+Max Amount is:= 232925
+Min Amount is:= 4832
+
+Statement processed.
+0.00 seconds
+-------------------------------------------
+
+create or replace PROCEDURE finddate(EVENT_BOOKING_DATE IN date)
+IS
+da event_details%rowtype;
+CURSOR c1 IS select * from event_details WHERE EVENT_BOOKING_DATE BETWEEN '02/18/2022' and '03/20/2022';
+
+begin 
+  open c1;
+  loop
+   fetch c1 into da;
+   EXIT WHEN c1%notfound;
+   dbms_output.put_line(da.EVENT_BOOKING_DATE || ' ----- ' ||da.EVENT_TOTAL_AMOUNT);
+   end loop;
+   close c1;
+end;
+
+
+begin
+  finddate('02/18/2022');
+end;
+
+---------------------------OutPut-----------------
+02/18/2022 ----- 232925
+02/26/2022 ----- 17715.61
+03/11/2022 ----- 5989.5
+03/09/2022 ----- 14641
+03/18/2022 ----- 5989.5
+03/20/2022 ----- 4831.53
+02/18/2022 ----- 27500
+
+Statement processed.
+
+0.00 seconds
+-----------------------------------------------------
+
+
+
+create or replace PROCEDURE newrecod(input IN number)
+IS
+d event_details%rowtype;
+begin
+  select * into d from event_details WHERE EVENT_ID = input;
+  dbms_output.put_line(d.EVENT_ID || ' ----- ' || d.EVENTTYPE_ID || ' ----- ' || d.EVENT_BOOKING_DATE || ' ----- ' || d.EVENT_TOTAL_AMOUNT || ' ----- ' || d.EVENT_ORGANIZERNAME || '----' || d.EVENT_PLACE);
+end;
+
+begin
+  newrecod(40);
+end;
+
+-----------OutPut-------------
+40 ----- 19 ----- 02/18/2022 ----- 25000 ----- cws----Vesu
+
+Statement processed.
+0.00 seconds
+----------------------------
+
+
+create or replace function t_amt(y number , eytname event_type.eventtype_name%type)
+RETURN number
+IS
+ total_amt number:= 0;
+begin
+ select sum(EVENT_TOTAL_AMOUNT) into total_amt from event_details WHERE EXTRACT(YEAR from EVENT_BOOKING_DATE) = y
+ AND eventtype_id IN (select eventtype_id from event_type WHERE eventtype_name=eytname);
+ return total_amt;
+end;
+
+
+declare 
+ a number(10);
+begin
+  a:=t_amt(2022, 'Birthday');
+  dbms_output.put_line('Your Birthday total amount is:= '|| a);
+end;
+
+--------------OutPut-------------
+Your Birthday total amount is:= 11979
+
+Statement processed.
+
+0.00 seconds
+---------------------------------
+
+
+create or replace function total(input IN char)
+return number
+IS
+n number(10);
+
+begin
+  select COUNT(*) into n from event_type WHERE EVENTTYPE_NAME = input ;
+  return n;
+end;
+
+declare
+   a number(10);
+begin
+  a:=total('Wedding');
+  dbms_output.put_line(a || ' - Wedding Event');
+end;
+
+declare
+   a number(10);
+begin
+  a:=total('RingCeremony');
+  dbms_output.put_line(a || ' - RingCeremony Event');
+end;
+
+declare
+   a number(10);
+begin
+  a:=total('Birthday');
+  dbms_output.put_line(a || ' - Birthday Event');
+end;
+
+declare
+   a number(10);
+begin
+  a:=total('BabyShower');
+  dbms_output.put_line(a || ' - BabyShower Event');
+end;
+-------------OutPut-----------
+1 - BabyShower Event
+
+Statement processed.
+
+0.01 seconds
+------------------------------
+
+
+
+

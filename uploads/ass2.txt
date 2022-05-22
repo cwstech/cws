@@ -1,0 +1,157 @@
+/*
+PC-NO:- 018
+Enroll = SR21BSIT139
+Faculty Name: Rupal Ma'am
+Name = Namra Shubham K.
+Class = B.Sc.IT
+Date = 22/04/2022
+Div = B
+Assignment  2
+Assignment Aim  OOP CONCEPT 
+Program Title OOPS
+*/
+
+import java.util.*;
+
+// BMI calculator
+
+class input
+{
+    double wp,hin,wkg,hm,bmi;
+    void getdata()
+    {
+        Scanner sc= new Scanner(System.in);
+        System.out.println("Enter weight in pounds and height in inches: ");
+        wp= sc.nextDouble();
+        hin=sc.nextDouble();
+    }
+    void convert()
+    {
+        wkg= wp*0.45359237;
+        hm= hin*0.254;
+        bmi= (wkg)*100/(hm*hm);
+    }
+    void display()
+    {
+        System.out.println("Your BMI is: "+bmi);
+    }
+}
+public class april16arrayofobjects
+{
+    public static void main(String[] args)
+    {
+        input i = new input();
+        i.getdata();
+        i.convert();
+        i.display();
+    }
+}
+
+// result calculator
+
+class details
+{
+    String name,res;
+    int rno,m1,m2,m3,m4,total;
+    double per;
+    void getdata()
+    {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter students name and roll no ");
+        name =sc.nextLine();
+        rno=sc.nextInt();
+        System.out.println("Enter marks 1,2,3 and 4 respectively");
+        m1=sc.nextInt();
+        m2=sc.nextInt();
+        m3=sc.nextInt();
+        m4=sc.nextInt();
+    }
+    void calc()
+    {
+        total= m1+m2+m3+m4;
+        per= (total)*100/400;
+        if (per>=40)
+        {
+            res= "Pass";
+        }
+        else
+        {
+            res= "Fail";
+        }
+    }
+    void result()
+    {
+        System.out.println(rno+"\t"+name+"\t  "+m1+"  "+m2+"  "+m3+"  "+m4+"  "+total+"    "+per+"  \t\t"+res);
+    }
+}
+public class april16arrayofobjects
+{
+    public static void main(String[] args)
+    {
+         details d[]= new details[3];
+         for (int i=0; i<=2; i++)
+         {
+             d[i] = new details();
+             System.out.println("Details of student "+(i+1));
+             d[i].getdata();
+             d[i].calc();
+         }
+        System.out.println("Roll.no  Name    M1  M2  M3  M4  Total  Percentage  Result");
+        for (int i=0; i<=2; i++)
+        {
+            d[i].result();
+        }
+    }
+}
+
+
+// employee details
+
+class employee
+{
+    String name;
+    int eno;
+    double bs,da,hra,gs,it,ns;
+    double pt=80, te=200;
+    Scanner sc= new Scanner(System.in);
+    void getdata()
+    {
+        System.out.println("Enter employees name and no. ");
+        name= sc.nextLine();
+        eno=sc.nextInt();
+        System.out.print("Enter Basic Salary: ");
+        bs= sc.nextDouble();
+    }
+    void calc()
+    {
+        da= bs*0.4;
+        hra= bs*.15;
+        gs= bs+da+hra+te;
+        it= gs*0.1;
+        ns= (gs-pt)-it;
+    }
+    void display()
+    {
+        System.out.println(eno+"  \t"+name+"\t\t"+bs+"\t\t\t"+gs+"\t\t\t"+ns);
+    }
+}
+public class april16arrayofobjects
+{
+    public static void main(String[] args)
+    {
+        employee e[]= new employee[3];
+        for (int i=0; i<=2; i++)
+        {
+            e[i]= new employee();
+            System.out.println("Enter details of employee:"+(i+1));
+            e[i].getdata();
+            e[i].calc();
+        }
+        System.out.println("E.no\tName\t\tBasic Salary\tGross Salary\tNet Salary");
+        for (int i=0; i<=2; i++)
+        {
+            e[i].display();
+        }
+    }
+}
+

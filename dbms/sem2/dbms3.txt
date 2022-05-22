@@ -1,0 +1,210 @@
+Create table event_type
+(
+eventtype_id number (2) Primary Key, 
+eventtype_name varchar2(20) CHECK (eventtype_name IN ('Wedding','RingCeremony','Birthday','BabyShower'))
+);
+
+Create table event_details
+(
+event_id number(2) Primary Key,
+eventtype_id number(2) references event_type(eventtype_id), 
+event_booking_date date, 
+event_total_amount number(10,2) CHECK (event_total_amount>=0),
+event_organizername varchar2(20), 
+event_place varchar2 (20) CHECK (event_place IN ('Adajan','Piplod','Vesu'))
+);
+
+
+insert into event_type
+values (21,'Wedding');
+
+insert into event_type
+values (17,'RingCeremony');
+
+insert into event_type
+values (23,'Birthday');
+
+insert into event_type
+values (19,'BabyShower');
+
+insert into event_type
+values (22,'RingCeremony');
+
+insert into event_type
+values (18,'Birthday');
+
+select * from event_type;
+
+insert into event_details
+values (31,21,'02/18/2022',175000,'Saathiorg','Adajan');
+
+insert into event_details
+values (32,22,'02/26/2022',11000,'Saathiorg','Vesu');
+
+insert into event_details
+values (33,23,'03/11/2022',4500,'Shivamevents','Piplod');
+
+insert into event_details
+values (34,17,'03/09/2022',11000,'Saathiorg','Adajan');
+
+insert into event_details
+values (35,18,'03/18/2022',4500,'Shivamevents','Piplod');
+
+insert into event_details
+values (36,19,'03/20/2022',3000,'Shivamevents','Vesu');
+
+select * from event_details;
+
+
+
+DECLARE
+     veventtype_name event_type.eventtype_name%type; 
+     CURSOR c1 IS select eventtype_name from event_type;
+
+BEGIN
+    OPEN c1;
+    LOOP
+    FETCH c1 INTO veventtype_name;
+    dbms_output.put_line(c1%ROWCOUNT || '-' || veventtype_name);
+    EXIT WHEN c1%NOTFOUND;
+    END LOOP;
+    CLOSE c1;
+END;
+----------------OutPut---------------
+1-Wedding
+2-RingCeremony
+3-Birthday
+4-BabyShower
+5-Birthday
+6-RingCeremony
+6-RingCeremony
+
+Statement processed.
+
+0.01 seconds
+-------------------------------------
+
+
+
+DECLARE
+      CURSOR c1 IS select * from event_details;
+
+BEGIN
+      FOR i IN c1 LOOP
+      dbms_output.put_line(c1%ROWCOUNT ||'-'|| i.event_id ||'-' || i.event_place );
+      END LOOP;
+
+END;
+----------------OutPut---------------
+1-31-Adajan
+2-32-Vesu
+3-33-Piplod
+4-34-Adajan
+5-36-Vesu
+6-35-Piplod
+7-40-Vesu
+
+Statement processed.
+
+0.01 seconds
+-------------------------------------
+
+
+
+
+DECLARE 
+    evtid event_details.eventtype_id%type;
+    evorg event_details.event_organizername%type;
+    evplace event_details.event_place%type;
+
+    cursor c1 IS select eventtype_id,event_organizername,event_place from event_details;
+BEGIN
+
+    open c1;
+    loop
+    fetch c1 INTO evtid,evorg,evplace;
+    if c1%notfound then
+      dbms_output.put_line(c1%rowcount||' cursornotfound');
+    end if;
+    exit when c1%notfound;
+    dbms_output.put_line(evtid||' '||evorg||' '||evplace);
+    end loop;
+    close c1;
+
+END;
+-------------------OutPut-----------------
+21 Saathiorg Adajan
+22 Saathiorg Vesu
+23 Shivamevents Piplod
+17 Saathiorg Adajan
+19 Shivamevents Vesu
+18 Shivamevents Piplod
+19 cws Vesu
+7 cursornotfound
+
+Statement processed.
+
+0.01 seconds
+------------------------------------------
+
+
+
+DECLARE 
+     da event_details%ROWTYPE;
+     CURSOR c1(CURDATE DATE , AMMOUT NUMBER) IS select * FROM event_details WHERE event_booking_date = CURDATE AND event_total_amount < AMMOUT;
+BEGIN 
+    OPEN c1('02/18/2022', 2000000);
+    LOOP
+    fetch c1 INTO da;
+    EXIT WHEN c1%NOTFOUND;
+    dbms_output.put_line(C1%ROWCOUNT || '---' || da.event_total_amount || '---' || da.event_id || '---' || da.eventtype_id || '---' || da.event_booking_date || '---' || da.event_organizername || '---' || da.event_place );
+    END LOOP;
+    CLOSE c1;
+END;
+-----------OutPut----------------
+1---192500---31---21---02/18/2022---Saathiorg---Adajan
+2---25000---40---19---02/18/2022---cws---Vesu
+
+Statement processed.
+
+0.01 seconds
+---------------------------------
+
+
+DECLARE
+      wrTYPE event_type.eventtype_name %TYPE;
+       CURSOR C4(DTYPE VARCHAR2) IS SELECT eventtype_name FROM event_type WHERE
+       eventtype_name  = DTYPE;
+
+       CURSOR C5(DTYPE VARCHAR2) IS SELECT eventtype_name FROM event_type WHERE
+       eventtype_name = DTYPE;
+BEGIN
+      DBMS_OUTPUT.PUT_LINE(wrTYPE);
+       OPEN C4('Wedding');
+      LOOP
+      FETCH C4 INTO wrTYPE;
+       EXIT WHEN C4%NOTFOUND;
+       DBMS_OUTPUT.PUT_LINE(C4%ROWCOUNT||'-'|| wrTYPE);
+       END LOOP;
+        CLOSE C4;
+         OPEN C5('RingCeremony');
+         LOOP
+        FETCH C5 INTO wrTYPE;
+          EXIT WHEN C5%NOTFOUND;
+          DBMS_OUTPUT.PUT_LINE(C5%ROWCOUNT||'-'|| wrTYPE);
+      END LOOP;
+       CLOSE C5;
+END; 
+
+------------OutPut---------------
+1-Wedding
+1-RingCeremony
+2-RingCeremony
+
+Statement processed.
+
+0.01 seconds
+---------------------------------
+
+
+--------------------------------------------------------------------------------

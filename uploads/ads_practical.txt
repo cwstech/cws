@@ -1,0 +1,110 @@
+NAME :- KASHISH M. DALAL
+STD :- FY BSCIT SEM-2
+DIV :- B
+DATE :- 4/5/2022
+PC NO :- SRKI_053
+ENROLLMENT NO :- SR21BSIT019
+SUB : ADVANCED DATABASE SYSTEM
+
+CREATE TABLE AIRCRAFT_TABLE
+(
+ACID NUMBER(10) PRIMARY KEY,
+ACNAME VARCHAR2(20) NOT NULL,
+CAPACITY NUMBER(10) NOT NULL
+);
+
+ACID	ACNAME		CAPACITY
+1	AIRINDIA	20
+2	INDIGO		30
+3	BHARAT		60
+
+CREATE TABLE Flight_Schedule
+(
+SCHEDULEID NUMBER(15) PRIMARY KEY,
+FLIGHT_DATE DATE NOT NULL,
+ACID NUMBER(10) REFERENCES AIRCRAFT_TABLE(ACID),
+FAREAMT NUMBER(15),
+STARTFROM VARCHAR2(20),
+DESTINATION VARCHAR2(20)
+);
+
+INSERT INTO AIRCRAFT_TABLE
+VALUES(1,'AIRINDIA',20);
+
+
+INSERT INTO AIRCRAFT_TABLE
+VALUES(2,'INDIGO',30);
+
+
+INSERT INTO AIRCRAFT_TABLE
+VALUES(3,'BHARAT',60);
+
+
+INSERT INTO Flight_Schedule
+VALUES(01,'5/12/2022',1,35000,'INDIA','DUBAI');
+
+
+INSERT INTO Flight_Schedule
+VALUES(02,'7/10/2021',3,50000,'BOMBAY','LONDON');
+
+
+INSERT INTO Flight_Schedule
+VALUES(03,'11/13/2003',2,5000,'SURAT','MUMBAI');
+
+
+
+CREATE OR REPLACE FUNCTION FCNT(FAMT IN NUMBER)
+RETURN NUMBER
+IS
+N NUMBER(10);
+ BEGIN
+  select COUNT(*) into N from Flight_Schedule WHERE FAREAMT>20000 ;
+RETURN N;
+END;
+
+DECLARE
+A NUMBER(10);
+BEGIN
+A:=FCNT(50000);
+  dbms_output.put_line(A );
+end;
+------------------------------------------------------------------------------------------------------------------------------------------------
+OUTPUT:-
+Function created.
+2
+Statement processed.
+------------------------------------------------------------------------------------------------------------------------------------------------
+DECLARE
+EP VARCHAR2(20);
+BEGIN
+SELECT ACID INTO EP FROM AIRCRAFT_TABLE WHERE ACNAME='AIRBHARAT';
+EXCEPTION 
+WHEN NO_DATA_FOUND THEN
+DBMS_OUTPUT.PUT_LINE('NO DATA FOUND');
+END;
+------------------------------------------------------------------------------------------------------------------------------------------------
+NO DATA FOUND
+
+Statement processed.
+------------------------------------------------------------------------------------------------------------------------------------------------
+CREATE OR REPLACE TRIGGER BACKUP
+BEFORE UPDATE ON Flight_Schedule
+FOR EACH ROW
+BEGIN
+DBMS_OUTPUT.PUT_LINE('TRIGER CREATED AND FAREAMT UPDATED');
+END;
+
+BEGIN
+UPDATE Flight_Schedule
+SET FAREAMT=FAREAMT+2500 WHERE SCHEDULEID=1;
+END;
+------------------------------------------------------------------------------------------------------------------------------------------------
+Trigger created.
+
+SCHEDULEID	FLIGHT_DATE	ACID	FAREAMT	STARTFROM	DESTINATION
+1		05/12/2022	1	40000	INDIA		DUBAI
+2		07/10/2021	3	50000	BOMBAY		LONDON
+3		11/13/2003	2	5000	SURAT		MUMBAI
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+

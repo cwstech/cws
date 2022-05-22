@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html class="wide wow-animation" lang="en">
+
+<head>
+  <title>Assignment-Book(DBMS)</title>
+  <meta name="format-detection" content="telephone=no">
+  <meta name="viewport"
+    content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8">
+  <link rel="icon" href="images/favicon.png" type="image/x-icon">
+  <!-- Stylesheets-->
+  <link rel="stylesheet" type="text/css"
+    href="//fonts.googleapis.com/css?family=Montserrat:400,500,600,700%7CPoppins:400%7CTeko:300,400">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .ie-panel {
+      display: none;
+      background: #212121;
+      padding: 10px 0;
+      box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, .3);
+      clear: both;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    html.ie-10 .ie-panel,
+    html.lt-ie-10 .ie-panel {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="ie-panel"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img
+        src="images/ie8-panel/warning_bar_0000_us.jpg" height="42" width="820"
+        alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a>
+  </div>
+  <div class="preloader">
+    <div class="preloader-body">
+      <div class="cssload-container">
+        <div class="cssload-speeding-wheel"></div>
+      </div>
+      <p>CWS is Loading...</p>
+    </div>
+  </div>
+  <div class="page">
+    <!-- Page Header<a class="banner banner-top" href="https://www.templatemonster.com/intense-multipurpose-html-template.html" target="_blank"><img src="images/intense_02.jpg" alt=""/></a>
+      <header class="section page-header"> -->
+    <!-- RD Navbar-->
+    <div class="rd-navbar-wrap">
+      <nav class="rd-navbar rd-navbar-corporate" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed"
+        data-md-layout="rd-navbar-fixed" data-md-device-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static"
+        data-lg-device-layout="rd-navbar-fixed" data-xl-layout="rd-navbar-static"
+        data-xl-device-layout="rd-navbar-static" data-xxl-layout="rd-navbar-static"
+        data-xxl-device-layout="rd-navbar-static" data-lg-stick-up-offset="46px" data-xl-stick-up-offset="46px"
+        data-xxl-stick-up-offset="106px" data-lg-stick-up="true" data-xl-stick-up="true" data-xxl-stick-up="true">
+        <div class="rd-navbar-collapse-toggle rd-navbar-fixed-element-1" data-rd-navbar-toggle=".rd-navbar-collapse">
+          <span></span>
+        </div>
+        <div class="rd-navbar-aside-outer">
+          <div class="rd-navbar-aside">
+            <!-- RD Navbar Panel-->
+            <div class="rd-navbar-panel">
+              <!-- RD Navbar Toggle-->
+              <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
+              <!-- RD Navbar Brand-->
+              <div class="rd-navbar-brand">
+                <!--Brand--><h3><a class="brand" href="index.html" style="color:black;"> Assignment </h3></a>
+              </div>
+
+            </div>
+
+            <div class="rd-navbar-aside-right rd-navbar-collapse">
+              <ul class="rd-navbar-corporate-contacts">
+
+              </ul><a class="button button-md button-default-outline-2 button-ujarak" href="up.php">Upload</a>
+              <a class="button button-md button-default-outline-2 button-ujarak" href="enr.pdf">Enrollment No.</a>
+            </div>
+          </div>
+        </div>
+        <div class="rd-navbar-main-outer">
+          <div class="rd-navbar-main">
+            <div class="rd-navbar-nav-wrap">
+              <!-- RD Navbar Nav-->
+              <ul class="rd-navbar-nav">
+                <li class="rd-nav-item"><a class="rd-nav-link" href="index.html">Home</a>
+                </li>
+                <li class="rd-nav-item"><a class="rd-nav-link" href="java.html">JAVA</a>
+                </li>
+                <li class="rd-nav-item active"><a class="rd-nav-link" href="dbms.html">DBMS</a>
+                </li>
+                <!-- <li class="rd-nav-item"><a class="rd-nav-link" href="contact-us.html">Contact Us</a>
+                    </li> -->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+    </header>
+    <!-- Breadcrumbs -->
+    <section class="breadcrumbs-custom-inset">
+      <div class="breadcrumbs-custom context-dark bg-overlay-60">
+        <div class="container">
+          <h2 class="breadcrumbs-custom-title">DBMS</h2>
+          <ul class="breadcrumbs-custom-path">
+          </ul>
+        </div>
+        <div class="box-position" style="background-image: url(images/3.png);">
+        </div>
+      </div>
+    </section>
+    <!-- Base typography-->
+    <div class="container">
+      <div class="row row-50 justify-content-center align-items-xl-center">
+        <!--div class="col-md-10 col-lg-5 col-xl-6"><img src="images/1.png" alt="" width="519" height="564"/>
+            </div-->
+        <!--Main aaryu-->
+        <div class="col-mx-10 col-lg-7 col-xl-6">
+          <h1 class="text-spacing-25 font-weight-normal title-opacity-9">Choose This</h1>
+          <!-- Bootstrap tabs-->
+          <div class="tabs-custom tabs-horizontal tabs-line" id="tabs-5">
+            <!-- Nav tabs-->
+            <ul class="nav nav-tabs">
+              <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-5-1"
+                  data-toggle="tab">Sem-1(B)</a></li>
+              <li class="nav-item" role="presentation"><a class="nav-link active" href="#tabs-5-2"
+                  data-toggle="tab">Sem-2(B)</a></li>
+              <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-5-3"
+                  data-toggle="tab">Sem-1(A)</a></li>
+              <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-5-4"
+                  data-toggle="tab">Sem-2(A)</a></li>
+              <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-5-5"
+                  data-toggle="tab">Question</a></li>
+            </ul>
+            <!-- Tab panes-->
+            <div class="tab-content">
+              <div class="tab-pane fade" id="tabs-5-1">
+                <p></p>
+                <!-- Linear progress bar-->
+                <article class="progress-linear progress-secondary"><center>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <img src="images/n1.jpg" class="card-img-top" alt="...">
+                          <h5 class="card-title">Assignment-1</h5>
+                          <a href="dbms/Assignment-1.pdf" class="btn btn-primary">Show</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <img src="images/n2.jpg" class="card-img-top" alt="...">
+                          <h5 class="card-title">Assignment-2</h5>
+                          <a href="dbms/Assignment-2.pdf" class="btn btn-primary">Show</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <img src="images/n3.png" class="card-img-top" alt="...">
+                          <h5 class="card-title">Assignment-3</h5>
+                          <a href="dbms/Assignment-3.pdf" class="btn btn-primary">Show</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <img src="images/n4.png" class="card-img-top" alt="...">
+                          <h5 class="card-title">Assignment-4</h5>
+                          <a href="dbms/Assignment-4.pdf" class="btn btn-primary">Show</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <img src="images/n5.jpg" class="card-img-top" alt="...">
+                          <h5 class="card-title">Assignment-5</h5>
+                          <a href="dbms/Assignment-5.pdf" class="btn btn-primary">Show</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <img src="images/n6.jpg" class="card-img-top" alt="...">
+                          <h5 class="card-title">Assignment-6</h5>
+                          <a href="dbms/Assignment-6.pdf" class="btn btn-primary">Show</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <img src="images/n7.jpg" class="card-img-top" alt="...">
+                          <h5 class="card-title">Assignment-7</h5>
+                          <a href="dbms/Assignment-7.pdf" class="btn btn-primary">Show</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <img src="images/n8.png" class="card-img-top" alt="...">
+                          <h5 class="card-title">Assignment-8</h5>
+                          <a href="dbms/Assignment-8.pdf" class="btn btn-primary">Show</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <img src="images/n9.png" class="card-img-top" alt="...">
+                          <h5 class="card-title">Assignment-9</h5>
+                          <a href="dbms/Assignment-9.pdf" class="btn btn-primary">Show</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <img src="images/n10.png" class="card-img-top" alt="...">
+                          <h5 class="card-title">Assignment-10</h5>
+                          <a href="dbms/Assignment-10.pdf" class="btn btn-primary">Show</a>
+                        </div>
+                      </div>
+                    </div>
+                    <br>
+                 <center>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <img src="images/n11.png" class="card-img-top" alt="...">
+                          <h5 class="card-title">Assignment-11</h5>
+                          <a href="dbms/Assignment-11.pdf" class="btn btn-primary">Show</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div></center>
+              </center>
+              <!------------------------------------------------------------------------->
+              </div>
+            <div class="tab-pane fade show active" id="tabs-5-2"> 
+             
+              <article class="progress-linear progress-secondary"><center>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <img src="images/n1.jpg" class="card-img-top" alt="...">
+                          <h5 class="card-title">Assignment-1</h5>
+ 
+                          <a href="dbms/sem2/dbms1.txt" class="btn btn-primary"> Show</a><a target="_blank"/>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <img src="images/n2.jpg" class="card-img-top" alt="...">
+                          <h5 class="card-title">Assignment-2</h5>
+                          <a href="dbms/sem2/dbms2.txt" class="btn btn-primary">Show</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </center>
+              </article>
+                              <article class="progress-linear progress-secondary"><center>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <img src="images/n3.jpg" class="card-img-top" alt="...">
+                          <h5 class="card-title">CURSOR</h5>
+                          <a href="dbms/sem2/dbms3.txt" class="btn btn-primary">Show</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <img src="images/n4.png" class="card-img-top" alt="...">
+                          <h5 class="card-title">Procedure & Function</h5>
+                          <a href="dbms/sem2/dbms4.txt" class="btn btn-primary">Show</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </center>
+              </article>
+
+               <article class="progress-linear progress-secondary"><center>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <img src="images/n5.jpg" class="card-img-top" alt="...">
+                          <h5 class="card-title">Trigger</h5>
+                          <a href="dbms/sem2/dbms5.txt" class="btn btn-primary">Show</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <img src="images/n6.jpg" class="card-img-top" alt="...">
+                          <h5 class="card-title">EXCEPTION</h5>
+                          <a href="dbms/sem2/dbms6.txt" class="btn btn-primary">Show</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </center>
+              </article>
+
+
+              <article class="progress-linear progress-secondary"><center>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <img src="images/n7.jpg" class="card-img-top" alt="...">
+                          <h5 class="card-title">EXCEPTION-2</h5>
+                          <a href="dbms/sem2/dbms7.txt" class="btn btn-primary">Show</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <img src="images/n8.png" class="card-img-top" alt="...">
+                          <h5 class="card-title">Procedure-2</h5>
+                          <a href="dbms/sem2/dbms8.txt" class="btn btn-primary">SHOW</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </center>
+              </article>
+            </div>
+
+
+
+              
+            
+              
+            <div class="tab-pane fade" id="tabs-5-3">
+              <div class="group-md group-middle">
+                <article class="progress-linear progress-secondary"><center>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <img src="images/n1.jpg" class="card-img-top" alt="...">
+                          <h5 class="card-title">Assignment-1</h5>
+                          <a href="dbms/A/Assignment-1.pdf" class="btn btn-primary">Show</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <img src="images/n2.jpg" class="card-img-top" alt="...">
+                          <h5 class="card-title">Assignment-2</h5>
+                          <a href="dbms/A/Assignment-2.pdf" class="btn btn-primary">Show</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <img src="images/n3.png" class="card-img-top" alt="...">
+                          <h5 class="card-title">Assignment-3</h5>
+                          <a href="dbms/A/Assignment-3.pdf" class="btn btn-primary">Show</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <img src="images/n4.png" class="card-img-top" alt="...">
+                          <h5 class="card-title">Assignment-4</h5>
+                          <a href="dbms/A/Assignment-4.pdf" class="btn btn-primary">Show</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <img src="images/n5.jpg" class="card-img-top" alt="...">
+                          <h5 class="card-title">Assignment-5</h5>
+                          <a href="dbms/A/Assignment-5.pdf" class="btn btn-primary">Show</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <img src="images/n5.jpg" class="card-img-top" alt="...">
+                          <h5 class="card-title">Assignment-5 EXTRA</h5>
+                          <a href="dbms/A/Assignment-5e.pdf" class="btn btn-primary">Show</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <img src="images/n6.jpg" class="card-img-top" alt="...">
+                          <h5 class="card-title">Assignment-6</h5>
+                          <a href="dbms/A/Assignment-6.pdf" class="btn btn-primary">Show</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <img src="images/n7.jpg" class="card-img-top" alt="...">
+                          <h5 class="card-title">Assignment-7</h5>
+                          <a href="dbms/A/Assignment-7.pdf" class="btn btn-primary">Show</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <img src="images/n8.png" class="card-img-top" alt="...">
+                          <h5 class="card-title">Assignment-8</h5>
+                          <a href="dbms/A/Assignment-8.pdf" class="btn btn-primary">Show</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <img src="images/n9.png" class="card-img-top" alt="...">
+                          <h5 class="card-title">Assignment-9</h5>
+                          <a href="dbms/A/Assignment-9.pdf" class="btn btn-primary">Show</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div></center>
+                    </div>
+                  
+              </center>
+            </div>
+            <div class="tab-pane fade" id="tabs-5-4">
+               <article class="progress-linear progress-secondary"><center>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <img src="images/n1.jpg" class="card-img-top" alt="...">
+                          <h5 class="card-title">Assignment-1</h5>
+                          <a href="dbms/sem2/dbms1.pdf" class="btn btn-primary">Show</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <img src="images/n2.jpg" class="card-img-top" alt="...">
+                          <h5 class="card-title">Assignment-2</h5>
+                          <a href="dbms/sem2/dbms2.pdf" class="btn btn-primary">Show</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+               </center>
+               </article>
+            </div>
+              <!-- Linear progress bar-->
+            <div class="tab-pane fade" id="tabs-5-5">
+              <a href="dbms/dbms.pdf">
+              <div class="card mb-3">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img src="images/3.png" class="img-fluid rounded-start" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">Questions(Div-B)[SEM-1]</h5>
+                      <!--p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p-->
+                    </div>
+                    </div>
+                  </div>
+                </div>
+            </a>
+              <a href="dbms/sem2/ads_bf.pdf"
+                              <div class="card mb-3">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img src="images/3.png" class="img-fluid rounded-start" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">Questions(Div-B)[SEM-2]</h5>
+                      
+                </div>
+              </div>
+            </div>
+              </a>
+              
+
+
+              <a href="dbms/A/dbms.pdf"
+                              <div class="card mb-3">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img src="images/3.png" class="img-fluid rounded-start" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">Questions(Div-A)[SEM-1]</h5>
+                      
+                </div>
+              </div>
+            </div>
+              </a>
+              
+
+
+              
+           
+            </a>
+              <a href="dbms/sem2/A/ads_a.pdf"
+                              <div class="card mb-3">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img src="images/3.png" class="img-fluid rounded-start" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">Questions(Div-A)[SEM-2]</h5>
+                      
+                </div>
+              </div>
+            </div>
+              </a>
+              </div>
+            <!----------New Layer>-->
+            
+          </div>
+                <!-- Linear progress bar-->
+            </div>
+            <!-- Linear progress bar-->
+            <article class="progress-linear progress-secondary">
+              <div>
+              </div>
+          </div>
+<br>
+        </div>
+      </div>
+    </div>
+    </div>
+    <!--/div><-->
+</div>
+</section>
+<footer class="section footer-corporate context-dark">
+  <div class="footer-corporate-inset">
+    <div class="container">
+      <div class="row row-40 justify-content-lg-between">
+        <div class="col-sm-6 col-md-12 col-lg-3 col-xl-4">
+          <div class="oh-desktop">
+            <div class="wow slideInRight" data-wow-delay="0s">
+              <h6 class="text-spacing-100 text-uppercase">Contact us</h6>
+              <ul class="footer-contacts d-inline-block d-sm-block">
+                <li>
+                  <div class="unit">
+                    <div class="unit-left"><span class="icon fa fa-phone"></span></div>
+                    <div class="unit-body">
+                      <H6>Not available</H6>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="unit">
+                    <div class="unit-left"><span class="icon fa fa-envelope"></span></div>
+                    <div class="unit-body"><a class="link-aemail"href="mailto:techcwshelp@gmail.com">techcwshelp@gmail.com</a>
+                  </div>
+                </li>
+                <li>
+                  <div class="unit">
+                    <div class="unit-left"><span class="icon fa fa-location-arrow"></span></div>
+                    <div class="unit-body">
+                      <h6>CWS, Surat, IN </h6>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-5 col-lg-3 col-xl-4">
+          <div class="oh-desktop">
+            <div class="wow slideInDown" data-wow-delay="0s">
+              <h6 class="text-spacing-100 text-uppercase">Our New Projects</h6>
+              <!-- Post Minimal 2-->
+              <article class="post post-minimal-2">
+                <p class="post-minimal-2-title"><a href="#">Social Media</a></p>
+              </article>
+               <article class="post post-minimal-2">
+                      <p class="post-minimal-2-title"><a href="ora.html">Online Oracle</a></p>
+                    </article>
+              <!-- Post Minimal 2-->
+              <article class="post post-minimal-2">
+                <p class="post-minimal-2-title"><a href="#">More Comming Soon</a></p>
+              </article>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-11 col-md-7 col-lg-5 col-xl-4">
+          <div class="oh-desktop">
+            <div class="wow slideInLeft" data-wow-delay="0s">
+              <h6 class="text-spacing-100 text-uppercase">About</h6>
+              <ul class="row-6 list-0 list-marked list-marked-md list-marked-secondary list-custom-2">
+                <li><a href="about.html">About us</a></li>
+                <li><a href="#">Our Projects</a></li>
+                <li><a href="#">Our Team</a></li>
+                <li><a href="https://1.cwsass.repl.co">Old Website</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+</footer>
+    <!-- Global Mailform Output-->
+    <div class="snackbars" id="form-output-global"></div>
+    <!-- Javascript-->
+    <script src="js/core.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

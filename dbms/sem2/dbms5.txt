@@ -1,0 +1,71 @@
+Name: 
+Class: FY IT Sem-2
+Subject: Advanced Database Systems
+Date: 5 April 2022
+Div: 
+Enrollment NO. 
+PC NO: 
+Aim: TRIGGER
+Assignment no.: 6
+       
+
+TRIGGER
+
+1. Create a trigger that fires on the event_details table before any event
+occurs from insert , update or delete. If trigger is an update operation then
+update event amount and display appropriate message when event fires.
+
+create or replace trigger t1
+before insert or update or delete ON event_details
+for each row 
+declare
+begin
+dbms_output.put_line('Event_details Table Updated');
+end;
+
+a)  insert into event_details values(37,18,'01/16/2022',8000,'Shivamevents','Adajan');
+Output: 
+Event_details Table Updated
+1 row(s) inserted.
+b) update event_details set event_total_amount= event_total_amount+1000 where event_id=35;
+Output:
+Event_details Table Updated
+1 row(s) updated.
+c) delete from event_details where event_id=36;
+Output:
+Event_details Table Updated
+1 row(s) deleted.
+
+--------------------------------------------------------------------------------------------------------------
+
+2. Create a trigger that fires on the “event_details” table before delete
+operation. If any data is deleted from “event_details” table then take
+backup (do insert ) in “event_old” table.
+
+create table event_old
+(
+eid number Primary key,
+evtid number,
+evbdate date,
+evtamt number,
+evorgname varchar2(20),
+evplace varchar2(20)
+);
+
+create or replace trigger t2 
+before delete ON event_details
+for each row
+declare
+begin
+insert into event_old
+values (:OLD.EVENT_ID, :OLD.EVENTTYPE_ID, :OLD.EVENT_BOOKING_DATE, :OLD.EVENT_TOTAL_AMOUNT, :OLD.EVENT_ORGANIZERNAME, :OLD.EVENT_PLACE);
+dbms_output.put_line('Deleted data SAVED into the event_old table');
+end;
+
+Delete from event_details where event_id=37;
+Output:
+Deleted data SAVED into the event_old table
+Event_details Table Updated
+
+--------------------------------------------------------------------------------------------------------------
+

@@ -1,0 +1,69 @@
+
+import java.util.Scanner;
+
+class Array
+{
+    int sal, Basic_sal, DA, HRA, TDS, PF;
+    String emp;
+    int count=0;
+    String name;
+    void designations()
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter Your designations in Manager(1), Supervisor(2) OR Executive(3)");
+        emp = sc.nextLine();
+        for(int i=0; i<emp.length(); i++)
+        {
+            count++;
+            
+        }
+        System.out.println("Your Total emp is:= "+count);
+    }
+    
+    void getdata()
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter Your Name:= ");
+        name = sc.nextLine();
+        System.out.println("Enter Your Basic Salary:= ");
+        Basic_sal = sc.nextInt();
+        System.out.println("Enter Your DA:= ");
+        DA = sc.nextInt();
+        System.out.println("Enter Your HRA:= ");
+        HRA = sc.nextInt();
+        System.out.println("Enter Your TDS:= ");
+        TDS = sc.nextInt();
+        System.out.println("Enter Your PF:= ");
+        PF = sc.nextInt();
+    }
+    void cal()
+    {
+        int total = Basic_sal+DA+HRA-(TDS+PF);
+        System.out.println("Your Salaty is:= "+total+" And Your Name is:= "+name);
+    }
+}
+
+
+
+public class Array_Object {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter Your length of Array:= ");
+        int number = sc.nextInt();
+        Array a[] = new Array[number];
+        
+        for(int i =0; i<number; i++)
+        {
+           a[i] = new Array();
+           a[i].getdata();
+           a[i].designations();
+        }
+        for(int i = 0; i<number; i++)
+        {
+            a[i].cal();
+        }
+
+    }
+    
+}
+

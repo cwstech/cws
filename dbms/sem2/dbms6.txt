@@ -1,0 +1,52 @@
+select * from event_details;
+
+DECLARE
+ eplace varchar2(20);
+ etamt number;
+ eid number;
+ a int:= 10;
+ b int:= 0;
+ answer int;
+BEGIN
+ select EVENT_PLACE INTO eplace from event_details;
+ select event_total_amount INTO etamt from event_details where event_id=36;
+ select EVENT_ORGANIZERNAME INTO eid from event_details where event_id=35;
+ answer:= a/b;
+EXCEPTION
+ when no_data_found then
+ dbms_output.put_line('NO APPROPRIATE DATA FOUND ');
+ when too_many_rows then
+ dbms_output.put_line('ERROR! SELECT QUERY TRIED TO RETURN TOO MANY ROWS');
+ when value_error then
+ dbms_output.put_line('SOME VALUE ERROR FOUND');
+ when zero_divide then
+ dbms_output.put_line('DIVIDE BY ZERO ERROR FOUND, PLEASE CHECK THE VALUES');
+END;
+
+
+
+
+create or replace procedure add_new_event(eid in number)
+IS
+ myex exception;
+
+begin
+  if eid = EVENT_ID  then 
+    raise myex
+  else
+    insert into event_details
+    values(44,17,'3/20/2022',50000,'Saathiorg','Adajan');
+  end if;
+exception
+  when myex than
+  dbms_output.put_line('Error');
+ 
+  when DUP_VAL_ON_INDEX then
+  dbms_output.put_line('Don't error same event_id');
+
+  when other then
+  dbms_output.put_line('Other Error');
+  
+end;
+
+

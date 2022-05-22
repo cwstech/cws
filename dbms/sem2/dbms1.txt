@@ -1,0 +1,128 @@
+Name: 
+Class: FY B.Sc IT Sem-2
+Div: B
+Subject: Advance Database Systems
+Enrollment No.: 
+Date: 1 Feb 2022
+Aim:  PL/SQL  Blocks
+PC NO:
+Assignment no.: 1
+___________________________________________________________________
+
+
+1. Write a PL/SQL block which calculates the cube of number 4.
+Statement: 
+declare
+  a number(5);
+  cube number(5);
+begin 
+  a:= 4;
+  cube:= a*a*a;
+  dbms_output.put_line('The Cube of '|| a || ' is ' ||cube);
+end;
+
+Output: The Cube of 4 is 64
+
+___________________________________________________________________
+
+2. Write a PL/SQL block which calculates the simple interest with use following formula :  SI = (P*R*N) /100  Where P=5000, R=4.5 and N= 3
+Statement: 
+declare
+  p number(10);
+  r number(10,5);
+  n number(10);
+  SI number(10);
+begin 
+  p:= 5000;
+  r:= 4.5;
+  n:= 3;
+  SI:= (p*r*n)/100;
+  dbms_output.put_line('The Simple Interest is ' ||SI);
+end;
+
+Output: The Simple Interest is 675
+
+___________________________________________________________________
+
+3. Write a PL/SQL block which displays the factorial of number 4.
+Statement:
+--  1st method 
+declare 
+ a number(10);
+ fact number(10,5);
+begin 
+ a:= 4;
+ fact:= 4*3*2*1;
+ dbms_output.put_line('The Factorial of '|| a || ' is '|| fact);
+end;
+
+Output: The Factorial of 4 is 24
+
+--  2nd method using WHLE LOOP
+declare 
+ a number(5);
+ temp number(5);
+ fact number(5);
+begin
+ a:= 4;
+ temp:= a;
+ fact:=1;
+ WHILE temp!=0 LOOP
+ fact:= fact*temp;
+ temp:= temp-1;
+ END LOOP;
+ dbms_output.put_line('The Factorial of '|| a || ' is '||fact);
+end;
+
+Output: The Factorial of 4 is 24
+
+___________________________________________________________________
+
+4. Write a PL/SQL block to identify any number is negative or positive or ZERO. and display appropriate messages for the same. [Take any  variable value]
+Statement:
+declare
+ a integer;
+begin
+ a:=-31;
+ IF (a>0) THEN
+ dbms_output.put_line('Value of given number is '||a);
+ dbms_output.put_line('Given number is positive');
+ elsif (a<0) Then
+ dbms_output.put_line('Value of given number is '||a);
+ dbms_output.put_line('Given number is negative');
+ else
+ dbms_output.put_line('Value of given number is '||a);
+ dbms_output.put_line('Given number is zero');
+ END IF;
+end;
+
+Output:  Value of given number is -31
+         Given number is negative
+
+___________________________________________________________________
+
+5. Write a PL/SQl code to display the following pattern:
+      1
+      23
+      456
+Statement:
+declare 
+n number:=0;
+begin
+for i in 1..4
+loop
+for j in 1..i
+loop
+n:=n+1;
+dbms_output.put(n);
+end loop;
+dbms_output.new_line;
+end loop;
+end;
+
+Output: 1
+23
+456
+78910
+
+

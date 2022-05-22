@@ -1,0 +1,60 @@
+select * from event_details;
+select * from event_type;
+
+create or replace trigger display_salary
+BEFORE delete OR update OR insert ON event_details
+
+for each row
+WHEN(NEW.EVENT_ID>0)
+
+declare 
+   sal_diff number;
+
+begin  
+   sal_diff:= :NEW.EVENT_TOTAL_AMOUNT + :OLD.EVENT_TOTAL_AMOUNT;
+   dbms_output.put_line('evenr fire:= ' || :NEW.EVENT_TOTAL_AMOUNT);
+END;
+
+insert into event_details
+values(45,21,'2/18/2022',20000,'CWS','Vesu');
+
+update event_details
+set EVENT_TOTAL_AMOUNT = EVENT_TOTAL_AMOUNT + 2500
+WHERE EVENT_ID = 40;
+
+
+create table event_old
+(
+EVENT_ID number(10),
+EVENTTYPE_ID number(10),
+EVENT_BOOKING_DATE date,
+EVENT_TOTAL_AMOUNT number(10),
+EVENT_ORGANIZERNAME varchar2(50),
+EVENT_PLACE varchar2(20)
+);
+select * from event_old;
+
+
+create or replace trigger de_backup
+before delete ON event_details
+
+for each row
+
+declare 
+begin
+  insert into event_old
+  values(:OLD.EVENT_ID, :OLD.EVENTTYPE_ID, :OLD.EVENT_BOOKING_DATE, :OLD.EVENT_TOTAL_AMOUNT, :OLD.EVENT_ORGANIZERNAME, :OLD.EVENT_PLACE);
+
+dbms_output.put_line('delete recored save in a event_old table');
+
+end;
+
+
+insert into event_details
+values(46,21,'2/18/2022',20000,'CWS','Vesu');
+
+select * from event_old;
+delete from event_details WHERE EVENT_ID = 40;
+
+
+

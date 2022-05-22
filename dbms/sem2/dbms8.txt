@@ -1,0 +1,95 @@
+select * from event_details;
+select * from event_type;
+
+(1)-------------
+create or replace procedure findid(eid number)
+is
+  a event_type%rowtype;
+begin
+  select * into a from event_type where EVENTTYPE_ID = eid;
+  dbms_output.put_line(a.EVENTTYPE_ID|| '-' || a.EVENTTYPE_NAME);
+exception
+  when no_data_found then
+  dbms_output.put_line('Your enter Your id no data in database');
+  when others then 
+  dbms_output.put_line('Any others errors');
+end;
+
+begin
+  findid(19);
+end;
+
+
+(2)---------------
+
+declare 
+  num1 number:= 21;
+  num2 number:= 22;
+  a event_type%rowtype;
+  b number(8);
+begin
+declare
+begin
+  select * into a from event_type where EVENTTYPE_ID = num1;
+  dbms_output.put_line(a.EVENTTYPE_ID);
+exception
+  when no_data_found then 
+  dbms_output.put_line('Your enter id data not found in database');
+  when others then 
+  dbms_output.put_line('Any others error to find this id');
+end;
+declare
+begin
+  select eventtype_name  into b from event_type where EVENTTYPE_ID = num2;
+exception
+  when value_error then
+  dbms_output.put_line('error change datatype');
+end;
+EXCEPTION
+   when others then
+   dbms_output.put_line('any others error');
+END;
+  
+
+
+
+
+
+
+(3)----------
+
+create or replace procedure findprice(eid number)
+is
+  a event_details%rowtype;
+  myex exception;
+begin
+  select * into a from event_details where EVENT_ID = eid;
+  dbms_output.put_line(a.EVENT_ID || '-' || a.EVENT_TOTAL_AMOUNT );
+  if a.EVENT_TOTAL_AMOUNT > 5000 then
+  raise myex;
+  else
+  dbms_output.put_line('Your value is not grather than 5000');
+  end if;
+exception
+   when myex then 
+   dbms_output.put_line('Your amount is more the 5000 '); 
+end;
+
+begin
+ findprice(31);
+end;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

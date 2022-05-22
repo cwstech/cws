@@ -1,0 +1,158 @@
+Name: 
+Class: FY B.Sc IT Sem-2
+Div: B
+Subject: Advance Database Systems
+Enrollment No.: 
+Date: 4 Feb 2022
+Aim:  PL/SQL  Blocks 
+PC NO: 
+Assignment no.: 2
+
+-------------------------------------------------------------------------------------------------------
+
+1. Write a plsql for following pattern:  Sum= 1+2+3+….+10
+Statement:
+declare
+ a number:=10;
+ i number:=1;
+ add number:=0;
+begin
+ for i IN 1..a loop
+ add:= add+i;
+ end loop;
+ dbms_output.put_line('The sum of first '||a|| ' natural numbers is: ' ||add);
+end; 
+
+Output: 
+The sum of first 10 natural numbers is: 55
+
+1.  Printing this pattern:   (Sum = 1+2+3+4+5+6+7+8+9+10)
+Statement:
+declare
+ a number:= 10;
+ i number:= 1;
+begin
+ dbms_output.put('Sum= ');
+ for i IN 1..a loop
+ if i=10 then 
+ dbms_output.put_line(i);
+ else 
+ dbms_output.put(i||' + ');
+ end if;
+ end loop;
+end;
+
+Output:  Sum= 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10
+
+____________________________________________________________________________________________________
+
+2. Printing sum of : 1-2+3-4+5-6+7-8+9-10
+Statement:
+declare
+ a number:= 10;
+ i number:=1;
+ add number:=0;
+begin 
+ for i IN 1..a loop
+ if i=1 then
+ add:= add+i;
+ elsif mod(i,2)=0 then
+ add:= add-i;
+ elsif mod(i,2)!=0 then
+ add:= add+i;
+ end if;
+ end loop;
+ dbms_output.put_line('The sum of given numbers is: '||add);
+end;
+
+Output:  The sum of given numbers is: -5
+
+2. Printing this pattern ( sum=  : 1-2+3-4+5-6+7-8+9-10 )
+Statement:
+declare
+ a number:= 10;
+ temp number:=1;
+begin 
+ dbms_output.put('sum = ');
+ for i IN 1..a loop
+ if i=1 then
+ dbms_output.put_line(i||' - ');
+ elsif mod(i,2)=0 then
+ dbms_output.put_line(i||' + ');
+ elsif mod(i,2)!=0 then
+ dbms_output.put_line(i||' - ');
+ end if;
+ end loop;
+end;
+Output: sum = 1 - 
+2 + 
+3 - 
+4 + 
+5 - 
+6 + 
+7 - 
+8 + 
+9 - 
+10 + 
+____________________________________________________________________________________________________
+
+3. Write a plsql for take name and age, identify for either person is valid for issue license. Display proper message.
+Statement:
+declare
+ name varchar2(50):= 'Sahid Midda';
+ age number:= 18;
+begin
+ if age>=18 then
+ dbms_output.put_line(name||' you are eligible for driving license.');
+ else 
+ dbms_output.put_line(name||' you are not eligibe for driving license. Your age must be greater than 18.');
+ end if;
+end;
+
+Output:  Sahid Midda you are eligible for driving license.
+
+____________________________________________________________________________________________________
+
+4. Write a plsql for take two numbers and do perform either addition, subtraction, multiplication or divison for this two number. [Perform any one task at a runtime.] [Hint: use elsif laddership]
+Statement:
+declare
+ a number:= 15;
+ b number:= 45;
+ add number(5);
+ subtraction number(5);
+ multiply number(5);
+ division number(5);
+ input number(2):=1;
+begin
+ if input=1 then
+ add:= a+b;
+ dbms_output.put_line('The addition of '||a|| ' and '||b|| ' is ' ||add);
+ elsif input=2 then
+ subtraction:= a-b;
+ dbms_output.put_line('The subtraction of '||a|| ' and '||b|| ' is ' ||subtraction);
+ elsif input=3 then
+ multiply:= a*b;
+ dbms_output.put_line('The multiply of '||a|| ' and '||b|| ' is ' ||multiply);
+ elsif input=4 then
+ division:= a/b;
+ dbms_output.put_line('The division of '||a|| ' and '||b|| ' is ' ||division);
+ end if;
+end;
+
+Output:  The addition of 15 and 45 is 60.
+
+____________________________________________________________________________________________________
+
+5. Write a plsql for take 3 different numbers and identify the middle number from that number.
+Statement: 
+declare 
+ n1 number:= 156;
+ n2 number:= 45;
+ n3 number:= 13;
+begin
+ dbms_output.put_line('The Middle number is: '||n2);
+end;
+
+Output:  The Middle number is: 45
+
+____________________________________________________________________________________________________

@@ -1,0 +1,241 @@
+/*
+PC-NO:- 018
+Enroll:= SR21BSIT139
+Faculty Name: 
+Name:= Namra Ramsha
+Class:= B.Sc.IT
+Date:= 22/04/2022
+Div:= B
+Assignment: 3
+Assignment Aim: Constructors
+taitle:- Q-1 Create a class “Student” that would contain enrollmentNo, name, and gender as data members. Create appropriate getter and setter methods(user defined functions) for the “Student” class and constructors to initialize the data members and display Student information.
+*/
+
+
+class student {
+
+    String enroll, name;
+    char gender;
+
+    void setname(String name) {
+        this.name = name;
+    }
+    
+    String getname(){
+        return name;
+    }
+    
+    void setenroll(String enroll){
+        this.enroll=enroll;
+    }
+    
+    String getenroll(){
+        return enroll;
+    }
+    
+    void setgender(char gender){
+        this.gender=gender;
+    }
+    
+    char getgender(){
+        return gender;
+    }
+
+}
+
+public class Student_Constructor {
+
+    public static void main(String[] args) {
+        student s = new student();
+        
+        s.setname("shubhamDanecha");
+        System.out.println("Your Name is:= "+s.getname());
+        
+        s.setenroll("50020");
+        System.out.println("Your EnrollNumber is:= "+s.getenroll());
+        
+        s.setgender('M');
+        System.out.println("Your Gender is:= "+s.getgender());
+    }
+
+}
+
+---------------------------------------
+
+/*
+PC-NO:- 018
+Enroll:= SR21BSIT139
+Faculty Name: 
+Name:= Namra Ramsha
+Class:= B.Sc.IT
+Date:= 22/04/2022
+Div:= B
+Assignment: 3
+Assignment Aim: Constructors
+taitle:- Q-2 Write a java program to make constructor called Volume and overload it. Find volume of cube (var*var*var), volume of cylinder (3.14*r2*h) and volume of rectangular box (l*b*h).
+(aim :use constructor overloading)
+*/
+
+
+import java.util.Scanner;
+
+class volume{
+    volume(double c){
+        System.out.println("Your cube volume is:= "+c);
+    }
+    volume(double r , double h){
+        double cal = (double)(Math.PI*r*r*h);
+        System.out.println("Your cylinder volume is:= "+cal);
+    }
+    volume(double l , double b , double H)
+    {
+        double tol = l*b*H;
+        System.out.println("Your rectangular box volume is:= "+tol);
+    }
+}
+public class Volume_overload_constructor {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter Your Cube R:= ");
+        double cube = sc.nextDouble();
+        double c = cube*cube*cube;
+        volume obj = new volume(c);
+        System.out.println("----------------------");
+        
+        System.out.println("Enter Your R and H");
+        double r = sc.nextDouble();
+        double h = sc.nextDouble();
+        volume obj1 = new volume(r , h);
+        
+        System.out.println("----------------------");
+        System.out.println("Enter L , B , H");
+        double l = sc.nextDouble();
+        double b = sc.nextDouble();
+        double H = sc.nextDouble();
+        volume obj2 = new volume(l , b , H);
+    }
+    
+}
+--------------------------------------------
+/*
+PC-NO:- 018
+Enroll:= SR21BSIT139
+Faculty Name: 
+Name:= Namra Ramsha
+Class:= B.Sc.IT
+Date:= 22/04/2022
+Div:= B
+Assignment: 3
+Assignment Aim: Constructors
+taitle:- Q-3 Write a java program which overloads constructor of the class DEPOSIT. The parameter (principal amount, period, rate of interest) values to these constructors are provided at run time. The user can provide input in one of the following forms: (aim :use constructor
+overloading)
+1. Amount, period in integer form and interest in decimal form
+2. Amount, period in double form and interest in integer form
+*/
+
+
+import java.util.Scanner;
+
+class DEPOSIT{
+    
+    DEPOSIT(double amt , double perion , double rate){
+        double de = (int)(amt*rate*perion);
+        System.out.println("Your insert in decimal form:= "+de);
+    }
+    DEPOSIT(int amt1 , int period1 , int rate1){
+        int i = (amt1*period1*rate1);
+        System.out.println("Your insert in inter form:= "+i);
+    }
+}
+public class parameter_constructor {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.println("Enter Your Amount:= ");
+        double amt = sc.nextInt();
+        System.out.println("Enter Your Amount:= ");
+        double period = sc.nextInt();
+        System.out.println("Enter Your Amount:= ");
+        double rate = sc.nextInt();
+        
+        DEPOSIT obj = new DEPOSIT(amt , period , rate);
+        
+        System.out.println("Enter Your Amount:= ");
+        int amt1 = sc.nextInt();
+        System.out.println("Enter Your Amount:= ");
+        int period1 = sc.nextInt();
+        System.out.println("Enter Your Amount:= ");
+        int rate1 = sc.nextInt();
+        
+        DEPOSIT obj1 = new DEPOSIT(amt1, period1, rate1);
+    }
+    
+}
+
+----------------------------------------
+
+/*
+PC-NO:- 018
+Enroll:= SR21BSIT139
+Faculty Name: 
+Name:= Namra Ramsha
+Class:= B.Sc.IT
+Date:= 22/04/2022
+Div:= B
+Assignment: 3
+Assignment Aim: Constructors
+taitle:- Write a java program which contains overloaded constructor named power () to raise a number m to a power n.
+a. The power () function takes a double value for m and int value for n and returns the result correctly. Use a default value of 2 for n to make the function to calculate squares when this argument is omitted.
+b. The power () function takes an int value for m and int value for n and returns the result correctly. Use a default value of 2 for n to make the function to calculate squares when this argument is omitted.
+*/
+
+import java.util.Scanner;
+
+class Power{
+    double m;
+    double n;
+    
+    Power(double x , int y){
+        m=x;
+        n=y;
+    }
+    Power(int a , double b)
+    {
+        m=a;
+        n=b;
+    }
+    void display(){
+        double res = Math.pow(m, n);
+        System.out.println("Power is:= "+res);
+    }
+}
+public class power_constructor {
+
+    public static void main(String[] args) {
+        double x;
+        int y;
+        
+        int a;
+        double b;
+        
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter x: ");
+        x=sc.nextDouble();
+        System.out.println("Enter y: ");
+        y=sc.nextInt();
+        
+        System.out.println("Enter a: ");
+        a=sc.nextInt();
+        System.out.println("Enter b: ");
+        b=sc.nextDouble();
+        
+        Power obj = new Power(x, y);
+        Power obj1 = new Power(a, b);
+        obj.display();
+        obj1.display();
+    }
+    
+}
+

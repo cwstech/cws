@@ -1,0 +1,147 @@
+Name: 
+Class: FY IT Sem-2
+Subject: Advanced Database Systems
+Div: B
+Date: 5 April 2022
+
+DECLARE
+ eplace varchar2(20);
+ etamt number;
+ eid number;
+ a int:= 10;
+ b int:= 0;
+ answer int;
+BEGIN
+ select EVENT_PLACE INTO eplace from event_details;
+ select event_total_amount INTO etamt from event_details where event_id=36;
+ select EVENT_ORGANIZERNAME INTO eid from event_details where event_id=35;
+ answer:= a/b;
+EXCEPTION
+ when no_data_found then
+ dbms_output.put_line('NO APPROPRIATE DATA FOUND ');
+ when too_many_rows then
+ dbms_output.put_line('ERROR! SELECT QUERY TRIED TO RETURN TOO MANY ROWS');
+ when value_error then
+ dbms_output.put_line('SOME VALUE ERROR FOUND');
+ when zero_divide then
+ dbms_output.put_line('DIVIDE BY ZERO ERROR FOUND, PLEASE CHECK THE VALUES');
+END;
+
+---------------output------------------
+ERROR! SELECT QUERY TRIED TO RETURN TOO MANY ROWS
+
+Statement processed.
+
+
+0.00 seconds
+			
+---------------------------------------
+
+
+
+create or replace procedure add_new_event(eid number, etid number, eydate date, etamt number , etorg varchar2, etplace varchar2)
+IS
+begin
+ insert into event_details
+ values(eid,etid,eydate,etamt,etorg,etplace);
+exception
+  when DUP_VAL_ON_INDEX then
+  dbms_output.put_line('Dont enter same primary key');
+
+  when OTHERS then
+  dbms_output.put_line('Other Error');
+ 
+end;
+
+declare
+begin
+add_new_event(31,21,'02/18/2022',2500,'CWS','Piplod');
+end;
+
+-----------------Output---------------
+
+Procedure created.
+
+
+0.08 seconds
+
+evenr fire:= 2500
+Dont enter same primary key
+
+Statement processed.
+
+
+0.00 seconds
+--------------------------------------
+
+
+
+create or replace procedure mern(eid number)
+IS 
+typeid event_details%rowtype;
+myex exception;
+cursor c1 is select * from event_details where event_id = eid;
+begin
+  if eid<=0 then
+  raise myex;
+  else
+  open c1;
+  loop
+  fetch c1 into typeid;
+  EXIT when c1%notfound;
+  dbms_output.put_line(typeid.EVENT_ID || typeid.EVENTTYPE_ID|| typeid.EVENT_BOOKING_DATE|| typeid.EVENT_TOTAL_AMOUNT|| typeid.EVENT_ORGANIZERNAME || typeid.EVENT_PLACE );
+  end loop;
+  close c1;
+  end if;
+exception
+  when myex then
+  dbms_output.put_line('enter your id is lesser than 0 and also they equal than 0');
+end;
+
+begin
+mern(31);
+end;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+create or replace procedure full(eid IN number , dt IN date)
+IS
+ty event_details%rowtype;
+cursor c1 is select * from event_details;
+date_my exception;
+
+begin
+  open c1;
+  loop
+  fetch c1 into ty;
+  exit when c1%notfound;
+  if dt = ty.EVENT_BOOKING_DATE then
+  raise date_my;
+  end if;
+  end loop;
+  close c1;
+update event_details set EVENT_BOOKING_DATE = dt where EVENT_ID = eid;
+
+exception
+  when date_my then
+  dbms_output.put_line('Dont enter same date');
+end;
+
+begin
+ full(31,'02/18/2022');
+end;
+
