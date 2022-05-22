@@ -1,0 +1,33 @@
+/* Write a program with the class called CONVERT that reads a
+number in meters, converts it to feet, and displays the result.
+ */
+
+
+import java.util.Scanner;
+
+class convter{
+    void cal(int meter){
+        double feet;
+        feet = meter * 30.28084;
+        
+        System.out.println("The Feet Of " + meter + " Meter(s) is: " + feet);
+    }
+}
+
+
+public class t1 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter Meter: ");
+        int meter = sc.nextInt();
+        convter c = new convter();
+        c.cal(meter);
+        
+    }
+    
+}
+

@@ -1,0 +1,63 @@
+/*
+PC-NO:- 
+Enroll:- 
+Faculty Name: 
+Name:- 
+Class:- B.Sc.IT
+Date:- 22/04/2022
+Div:- B
+Assignment: 3
+Assignment Aim: Constructors
+taitle:- Write a java program which contains overloaded constructor named power () to raise a number m to a power n.
+a. The power () function takes a double value for m and int value for n and returns the result correctly. Use a default value of 2 for n to make the function to calculate squares when this argument is omitted.
+b. The power () function takes an int value for m and int value for n and returns the result correctly. Use a default value of 2 for n to make the function to calculate squares when this argument is omitted.
+*/
+
+import java.util.Scanner;
+
+class Power{
+    double m;
+    double n;
+    
+    Power(double x , int y){
+        m=x;
+        n=y;
+    }
+    Power(int a , double b)
+    {
+        m=a;
+        n=b;
+    }
+    void display(){
+        double res = Math.pow(m, n);
+        System.out.println("Power is:= "+res);
+    }
+}
+public class power_constructor {
+
+    public static void main(String[] args) {
+        double x;
+        int y;
+        
+        int a;
+        double b;
+        
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter x: ");
+        x=sc.nextDouble();
+        System.out.println("Enter y: ");
+        y=sc.nextInt();
+        
+        System.out.println("Enter a: ");
+        a=sc.nextInt();
+        System.out.println("Enter b: ");
+        b=sc.nextDouble();
+        
+        Power obj = new Power(x, y);
+        Power obj1 = new Power(a, b);
+        obj.display();
+        obj1.display();
+    }
+    
+}
+

@@ -1,0 +1,76 @@
+/*
+           Div-A(FY.IT)
+           Date:29-12-21
+           2. Write a java Program to input the number from user. Display Sum of
+              squares of digits of an inputted number in Java
+ */
+import java.util.*;
+public class P6A2 {
+
+    
+    public static void main(String[] args) {
+        String w="";
+      Scanner s=new Scanner(System.in);
+      System.out.print("Enter the Digit: ");
+      int n=s.nextInt();
+      int sum=0;
+      double avg;
+      int r;
+      while(n!=0)
+      {
+          r=(n%10);
+          n=n/10;
+          System.out.println(r);
+          if(r==1)
+          {
+              w="one "+w;
+          }
+          if(r==2)
+          {
+              w="two "+w;
+              
+          }
+          if(r==3)
+          {
+              w="three "+w;
+              
+          }
+          if(r==4)
+          {
+              w="four"+w;
+              
+          }
+           if(r==5)
+          {
+              w="five "+w;
+              
+          }
+            if(r==6)
+          {
+              w="six "+w;
+              
+          }
+             if(r==7)
+          {
+              w="seven "+w;
+              
+          }
+              if(r==8)
+          {
+              w="eight "+w;
+              
+          }
+               if(r==9)
+          {
+              w="nine "+w;
+              
+          }
+              
+         
+          
+      }
+      System.out.println(w);
+           
+    }
+    
+}

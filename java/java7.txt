@@ -1,0 +1,61 @@
+/*
+PC-NO :- 
+Enroll :-  
+Faculty Name: 
+Name:- 
+Class:- B.Sc.IT
+Date:- 
+Div:- B
+Assignment:- 3
+Assignment Aim: Constructors
+taitle:- Q-1 Create a class “Student” that would contain enrollmentNo, name, and gender as data members. Create appropriate getter and setter methods(user defined functions) for the “Student” class and constructors to initialize the data members and display Student information.
+*/
+
+
+class student {
+
+    String enroll, name;
+    char gender;
+
+    void setname(String name) {
+        this.name = name;
+    }
+    
+    String getname(){
+        return name;
+    }
+    
+    void setenroll(String enroll){
+        this.enroll=enroll;
+    }
+    
+    String getenroll(){
+        return enroll;
+    }
+    
+    void setgender(char gender){
+        this.gender=gender;
+    }
+    
+    char getgender(){
+        return gender;
+    }
+
+}
+
+public class Student_Constructor {
+
+    public static void main(String[] args) {
+        student s = new student();
+        
+        s.setname("shubhamDanecha");
+        System.out.println("Your Name is:= "+s.getname());
+        
+        s.setenroll("50020");
+        System.out.println("Your EnrollNumber is:= "+s.getenroll());
+        
+        s.setgender('M');
+        System.out.println("Your Gender is:= "+s.getgender());
+    }
+
+}

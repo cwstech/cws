@@ -1,0 +1,55 @@
+/*
+PC-NO:- 
+Enroll:- 
+Faculty Name: 
+Name:- 
+Class:- B.Sc.IT
+Date:- 22/04/2022
+Div:- B
+Assignment: 3
+Assignment Aim: Constructors
+taitle:- Q-3 Write a java program which overloads constructor of the class DEPOSIT. The parameter (principal amount, period, rate of interest) values to these constructors are provided at run time. The user can provide input in one of the following forms: (aim :use constructor
+overloading)
+1. Amount, period in integer form and interest in decimal form
+2. Amount, period in double form and interest in integer form
+*/
+
+
+import java.util.Scanner;
+
+class DEPOSIT{
+    
+    DEPOSIT(double amt , double perion , double rate){
+        double de = (int)(amt*rate*perion);
+        System.out.println("Your insert in decimal form:= "+de);
+    }
+    DEPOSIT(int amt1 , int period1 , int rate1){
+        int i = (amt1*period1*rate1);
+        System.out.println("Your insert in inter form:= "+i);
+    }
+}
+public class parameter_constructor {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.println("Enter Your Amount:= ");
+        double amt = sc.nextInt();
+        System.out.println("Enter Your Amount:= ");
+        double period = sc.nextInt();
+        System.out.println("Enter Your Amount:= ");
+        double rate = sc.nextInt();
+        
+        DEPOSIT obj = new DEPOSIT(amt , period , rate);
+        
+        System.out.println("Enter Your Amount:= ");
+        int amt1 = sc.nextInt();
+        System.out.println("Enter Your Amount:= ");
+        int period1 = sc.nextInt();
+        System.out.println("Enter Your Amount:= ");
+        int rate1 = sc.nextInt();
+        
+        DEPOSIT obj1 = new DEPOSIT(amt1, period1, rate1);
+    }
+    
+}

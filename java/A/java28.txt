@@ -1,0 +1,74 @@
+/*
+           Div-A(FY.IT)
+           Date:20-12-21
+           3. Write functions in java to calculate gross salary, net salary and final salary of
+           an employee based upon given table.
+*/
+import java.util.*;
+public class P7A3 {
+
+    
+    public static void main(String[] args) {
+        Scanner s=new Scanner(System.in);
+        System.out.print("Enter Your Salary: ");
+        int sal=s.nextInt();
+        if(sal>=40000 && sal<=60000)
+        {
+            manager(sal);
+        }
+        else if(sal>20000 && sal<=40000)
+        {
+            supervisor(sal);
+        }
+        else if(sal>=10000 && sal<=20000)
+        {
+            clerk(sal);
+        }
+    }
+    public static void manager(int msal)
+    {
+        Scanner s=new Scanner(System.in);
+        System.out.print("Enter Homeloan: ");
+        int HL=s.nextInt();
+        int DA=(msal*40)/100;
+        int HRA=(msal*20)/100;
+        int GS=msal+DA+HRA;
+        int PF=2000;
+        int NS=GS-PF-HL;
+        int IT=(NS*30)/100;
+        int fsal=NS-IT;
+        System.out.print("Hello Manager Your Final Salary is "+fsal);
+        
+    }
+    public static void supervisor(int ssal)
+    {
+        Scanner s=new Scanner(System.in);
+        System.out.print("Enter Homeloan: ");
+        int HL=s.nextInt();
+        int DA=(ssal*40)/100;
+        int HRA=(ssal*20)/100;
+        int GS=ssal+DA+HRA;
+        int PF=1500;
+        int NS=GS-PF-HL;
+        int IT=(NS*20)/100;
+        int fsal=NS-IT;
+        System.out.print("Hello Supervisor Your Final Salary is "+fsal);
+        
+    }
+    public static void clerk(int csal)
+    {
+        Scanner s=new Scanner(System.in);
+        System.out.print("Enter Homeloan: ");
+        int HL=s.nextInt();
+        int DA=(csal*40)/100;
+        int HRA=(csal*20)/100;
+        int GS=csal+DA+HRA;
+        int PF=1000;
+        int NS=GS-PF-HL;
+        int IT=(NS*10)/100;
+        int fsal=NS-IT;
+        System.out.print("Hello Clerk Your Final Salary is "+fsal);
+        
+    }
+    
+}

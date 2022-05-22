@@ -1,0 +1,43 @@
+/*
+           Div-A(FY.IT)
+           Date:20-12-21
+           1. Write a functions in java to calculate simple interest and compound interest
+*/
+import java.util.*;
+public class P7A1 {
+public static void compound()
+{
+    System.out.println("Calculation for Coumpound interest.");
+    Scanner dis=new Scanner(System.in);
+        System.out.print("Enter Amount=");
+        int A=dis.nextInt();
+        System.out.print("Enter rate of intrest=");
+        double r=dis.nextInt();
+        System.out.print("Enter Time=");
+        int t=dis.nextInt();
+        double CI;
+        CI=A*(1+r/100)*t;
+        System.out.println("Coumpound interst is "+CI);
+}
+public static void simple()
+{
+    System.out.println("Calculation for simple interest.");
+  Scanner dis=new Scanner(System.in);
+        System.out.print("Enter Amount=");
+        int A=dis.nextInt();
+        System.out.print("Enter rate of intrest=");
+        double r=dis.nextInt();
+        System.out.print("Enter Time=");
+        int t=dis.nextInt();
+        double SI=A*(1+r*t);
+        System.out.println("Simple interest is "+SI);
+}
+        
+    
+    public static void main(String[] args) {
+        compound();
+        simple();
+        
+    }
+    
+}

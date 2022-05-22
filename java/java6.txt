@@ -1,0 +1,50 @@
+// employee details
+
+class employee
+{
+    String name;
+    int eno;
+    double bs,da,hra,gs,it,ns;
+    double pt=80, te=200;
+    Scanner sc= new Scanner(System.in);
+    void getdata()
+    {
+        System.out.println("Enter employees name and no. ");
+        name= sc.nextLine();
+        eno=sc.nextInt();
+        System.out.print("Enter Basic Salary: ");
+        bs= sc.nextDouble();
+    }
+    void calc()
+    {
+        da= bs*0.4;
+        hra= bs*.15;
+        gs= bs+da+hra+te;
+        it= gs*0.1;
+        ns= (gs-pt)-it;
+    }
+    void display()
+    {
+        System.out.println(eno+"  \t"+name+"\t\t"+bs+"\t\t\t"+gs+"\t\t\t"+ns);
+    }
+}
+public class april16arrayofobjects
+{
+    public static void main(String[] args)
+    {
+        employee e[]= new employee[3];
+        for (int i=0; i<=2; i++)
+        {
+            e[i]= new employee();
+            System.out.println("Enter details of employee:"+(i+1));
+            e[i].getdata();
+            e[i].calc();
+        }
+        System.out.println("E.no\tName\t\tBasic Salary\tGross Salary\tNet Salary");
+        for (int i=0; i<=2; i++)
+        {
+            e[i].display();
+        }
+    }
+}
+

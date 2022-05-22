@@ -1,0 +1,35 @@
+// BMI calculator
+
+import java.util.*;
+
+class input
+{
+    double wp,hin,wkg,hm,bmi;
+    void getdata()
+    {
+        Scanner sc= new Scanner(System.in);
+        System.out.println("Enter weight in pounds and height in inches: ");
+        wp= sc.nextDouble();
+        hin=sc.nextDouble();
+    }
+    void convert()
+    {
+        wkg= wp*0.45359237;
+        hm= hin*0.254;
+        bmi= (wkg)*100/(hm*hm);
+    }
+    void display()
+    {
+        System.out.println("Your BMI is: "+bmi);
+    }
+}
+public class april16arrayofobjects
+{
+    public static void main(String[] args)
+    {
+        input i = new input();
+        i.getdata();
+        i.convert();
+        i.display();
+    }
+}

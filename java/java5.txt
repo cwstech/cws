@@ -1,0 +1,56 @@
+// result calculator
+
+class details
+{
+    String name,res;
+    int rno,m1,m2,m3,m4,total;
+    double per;
+    void getdata()
+    {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter students name and roll no ");
+        name =sc.nextLine();
+        rno=sc.nextInt();
+        System.out.println("Enter marks 1,2,3 and 4 respectively");
+        m1=sc.nextInt();
+        m2=sc.nextInt();
+        m3=sc.nextInt();
+        m4=sc.nextInt();
+    }
+    void calc()
+    {
+        total= m1+m2+m3+m4;
+        per= (total)*100/400;
+        if (per>=40)
+        {
+            res= "Pass";
+        }
+        else
+        {
+            res= "Fail";
+        }
+    }
+    void result()
+    {
+        System.out.println(rno+"\t"+name+"\t  "+m1+"  "+m2+"  "+m3+"  "+m4+"  "+total+"    "+per+"  \t\t"+res);
+    }
+}
+public class april16arrayofobjects
+{
+    public static void main(String[] args)
+    {
+         details d[]= new details[3];
+         for (int i=0; i<=2; i++)
+         {
+             d[i] = new details();
+             System.out.println("Details of student "+(i+1));
+             d[i].getdata();
+             d[i].calc();
+         }
+        System.out.println("Roll.no  Name    M1  M2  M3  M4  Total  Percentage  Result");
+        for (int i=0; i<=2; i++)
+        {
+            d[i].result();
+        }
+    }
+}

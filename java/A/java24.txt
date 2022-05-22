@@ -1,0 +1,30 @@
+/*         Div-A(FY.IT)
+           Date:29-12-21
+           1. Write a java Program to print the sum and average of the inputted
+           number
+ */
+import java.util.*;
+public class P6A1 {
+
+    
+    public static void main(String[] args) {
+      Scanner s=new Scanner(System.in);
+      System.out.print("Enter the Digit: ");
+      int n=s.nextInt();
+      int sum=0;
+      int c=0;
+      double avg;
+      int r;
+      while(n!=0)
+      {
+          r=n%10;
+          sum=sum+r;
+          n=n/10;
+          System.out.println(r); 
+          c++;
+      }
+      avg=sum/c;
+          System.out.println("The Sum of Given number is "+sum+" and average is "+avg);   
+    }
+    
+}

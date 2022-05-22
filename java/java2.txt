@@ -1,0 +1,30 @@
+/*
+ * 2. Write a program with the class called TEST that prompts the
+user to enter a letter and check whether a letter is a vowel or
+consonant.
+ */
+
+class TEST{
+    void check(char c){
+        if(c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u'){
+            System.out.println("The '" + c + "' is Vowel!");
+        }else{
+            System.out.println("The '" + c + "' is not Vowel!");
+        }
+    }
+}
+public class t2 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter Only one Letter: ");
+        char c = sc.next().charAt(0);
+        TEST t = new TEST();
+        t.check(c);
+    }
+    
+}
+

@@ -1,0 +1,56 @@
+
+/*
+PC-NO:- 
+Enroll:- 
+Faculty Name: 
+Name:- 
+Class:- B.Sc.IT
+Date:- 
+Div:- B
+Assignment: 3
+Assignment Aim: Constructors
+taitle:- Q-2 Write a java program to make constructor called Volume and overload it. Find volume of cube (var*var*var), volume of cylinder (3.14*r2*h) and volume of rectangular box (l*b*h).
+(aim :use constructor overloading)
+*/
+
+
+import java.util.Scanner;
+
+class volume{
+    volume(double c){
+        System.out.println("Your cube volume is:= "+c);
+    }
+    volume(double r , double h){
+        double cal = (double)(Math.PI*r*r*h);
+        System.out.println("Your cylinder volume is:= "+cal);
+    }
+    volume(double l , double b , double H)
+    {
+        double tol = l*b*H;
+        System.out.println("Your rectangular box volume is:= "+tol);
+    }
+}
+public class Volume_overload_constructor {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter Your Cube R:= ");
+        double cube = sc.nextDouble();
+        double c = cube*cube*cube;
+        volume obj = new volume(c);
+        System.out.println("----------------------");
+        
+        System.out.println("Enter Your R and H");
+        double r = sc.nextDouble();
+        double h = sc.nextDouble();
+        volume obj1 = new volume(r , h);
+        
+        System.out.println("----------------------");
+        System.out.println("Enter L , B , H");
+        double l = sc.nextDouble();
+        double b = sc.nextDouble();
+        double H = sc.nextDouble();
+        volume obj2 = new volume(l , b , H);
+    }
+    
+}

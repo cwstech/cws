@@ -1,0 +1,47 @@
+/*
+ * 3. Write a java program with the class called TEST to find length
+of string and print second half of the string.
+ */
+
+
+import java.util.Scanner;
+
+class count{
+    int slen;
+    String s;
+    
+    void len(String s1){
+        
+        slen = s1.length();
+        
+        s = s1;
+        
+        System.out.println("Given String Length is: " + slen);
+            
+}
+    void half() {
+        String s2 = s.substring(0, (slen /2));
+        
+        System.out.println("The Half String is: "+ s2);
+        
+    }
+}
+public class t3 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.print("Enter String : ");
+        
+        String s1 = sc.nextLine();
+        
+        count v = new count();
+        v.len(s1);
+        v.half();
+    }
+    
+}
+
