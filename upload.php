@@ -1,34 +1,16 @@
 <?php
-if(isset($_POST['submit'])){
-  $file = $_FILES['file'];
 
-  $FileName = $_FILES['file']['name'];
-  $FileTmpName = $_FILES['file']['tmp_name'];
-  $FileSize = $_FILES['file']['size'];
-  $FileError = $_FILES['file']['error'];
-  $FileType = $_FILES['file']['type'];
+/* Get the name of the uploaded file */
+$filename = $_FILES['file']['name'];
 
-  $fileExt = explode('.',$FileName);
-  $fileActualEtc = strtolower(end($fileExt));
-  
-  $allowed = array('txt', 'pdf', 'docx', 'doc', 'png', 'jpg', 'jpeg', 'java');
+/* Choose where to save the uploaded file */
+$location = "upload/".$filename;
 
-  if (in_array($fileActualEtc, $allowed)){
-    if($FileError === 0){
-      if($FileSize <= 5000000){
-        $FileNameNew = uniqid('',true).".".$fileActualEtc;
-        $FileDest = 'uploads/'.$FileName;
-        move_uploaded_file($FileTmpName, $FileDest);
-        header("Location: up.php?uploadSuccess"); 
-      }else{
-        echo "Your File is too big!!Compress Your File under 5MB.";
-      }
-    }else{
-      echo "There was an Error Uploadind your File!!";
-    }
-  }else{
-    echo "You can't Upload this file!";
-  }
-
+/* Save the uploaded file to the local filesystem */
+if ( move_uploaded_file($_FILES['file']['tmp_name'], $location) ) { 
+  echo 'Success'; 
+} else { 
+  echo 'Failure'; 
 }
+
 ?>
