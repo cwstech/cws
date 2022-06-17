@@ -1,4 +1,4 @@
-
+-----------------------------------------------------------EVEN NO---------------------------------------------------------------
 import java.util.*;
 
 class customer
@@ -229,3 +229,292 @@ class bank
 
     }
 }
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------ODD NO---------------------------------------------------
+
+
+
+
+
+/*
+PC No:
+Enrollment No: 
+Faculty Name: RUPAL MAM 
+Student Name : 
+Class : FY IT 
+Div : B
+Date: 23/04/2022
+Assignment: 3
+Assignment Aim: To learn the Class concept(Use class concept for all programs), Array of objects
+*/
+
+
+import java.util.Scanner;
+/*Name :- 
+ *Date :- 5-Feb-2022
+ *Program :-1.Create Employee class and write main program to create its objects and do the following:.
+
+Calculate DA, HRA, IT, Gross Salary and Net Salary.
+ */
+
+/*
+ 
+ */
+class Employee
+{
+    double s;int id;String n;
+    
+    Employee()
+    {
+    Scanner dis=new Scanner (System.in);
+    System.out.println("Input Name ");
+    n=dis.nextLine();
+    System.out.println("Input  Empno");
+    id=dis.nextInt();
+    System.out.println("Input  Salary");
+    s=dis.nextDouble();
+    
+    }
+            
+    double HRA()
+    {
+      double HRA=(10*s)/100; 
+      return HRA;
+    }
+    double DA()
+    {
+      double DA=(5*s)/100; 
+      return DA;
+    }
+   
+}
+public class P45 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+    
+     
+    double HRA,DA,PF;
+    
+   
+    Employee x=new Employee();
+    HRA=x.HRA();
+    DA=x.DA();
+    
+        System.out.print("Name:");
+        
+         System.out.print("\tEmpno:");
+        
+         System.out.print("\tSalary:");
+        
+         System.out.print("\tHRA:");
+        
+         System.out.println("\tDA:");
+        System.out.print(x.n+"\t");
+        System.out.print(x.id+"\t");
+        System.out.print(x.s+"\t");
+        System.out.print(HRA+"\t");
+        System.out.print(DA+"\t");
+        
+        
+        
+    
+    }
+    
+}
+
+
+
+/*-------------------------------------------------------------------------------------------------------------------------------------------*/
+
+import java.util.Scanner;
+/*Name :- 
+ *Date :- 5-Feb-2022
+ *Program :-Write a java program to input employee details (Name, Empno, Salary). Calculate the
+HRA (10% of Salary), DA (5% of Salary) and deduct PF=100 from salary.Â  Display all
+information in proper format.
+ */
+
+/*
+ 
+ */
+class Employee
+{
+    double s;int id;String n;double HRA;double DA;
+    Employee()
+    {
+        n="yourname";
+        s=0;
+
+        DA=0;
+        HRA=0;
+
+
+    }
+    void getdata()
+    {
+    Scanner dis=new Scanner (System.in);
+    System.out.println("Input Name ");
+    n=dis.nextLine();
+    System.out.println("Input  Empno");
+    id=dis.nextInt();
+    System.out.println("Input  Salary");
+    s=dis.nextDouble();
+    
+    }
+            
+    double HRA()
+    {
+      HRA=(10*s)/100; 
+      return HRA;
+    }
+    double DA()
+    {
+     DA=(5*s)/100; 
+      return DA;
+    }
+   
+}
+public class P45 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+    
+     
+    double HRA,DA,PF;
+    
+   
+    Employee x=new Employee();
+    x.getdata();
+    HRA=x.HRA();
+    DA=x.DA();
+    
+        System.out.print("Name:");
+        
+         System.out.print("\tEmpno:");
+        
+         System.out.print("\tSalary:");
+        
+         System.out.print("\tHRA:");
+        
+         System.out.println("\tDA:");
+        System.out.print(x.n+"\t");
+        System.out.print(x.id+"\t");
+        System.out.print(x.s+"\t");
+        System.out.print(HRA+"\t");
+        System.out.print(DA+"\t");
+        
+        
+        
+    
+    }
+    
+}
+
+
+
+
+/*----------------------------------------------------------------------------------------------------------*/
+
+import java.util.Scanner;
+/*Name :- 
+ *Date :- 5-Feb-2022
+ *Program :-Write a java program to input employee details (Name, Empno, Salary). Calculate the
+HRA (10% of Salary), DA (5% of Salary) and deduct PF=100 from salary.Â  Display all
+information in proper format.
+ */
+
+/*
+ 
+ */
+class Employee
+{
+    double s;int id;String n;double HRA;double DA;
+    Employee()
+    {
+        n="yourname";
+        s=0;
+
+        DA=0;
+        HRA=0;
+
+
+    }
+    void getdata()
+    {
+    Scanner dis=new Scanner (System.in);
+    System.out.println("Input Name ");
+    n=dis.nextLine();
+    System.out.println("Input  Empno");
+    id=dis.nextInt();
+    System.out.println("Input  Salary");
+    s=dis.nextDouble();
+    
+    }
+            
+    void HRA()
+    {
+      HRA=(10*s)/100; 
+      
+    }
+    void DA()
+    {
+     DA=(5*s)/100; 
+      
+    }
+   
+}
+public class P45 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) 
+    {
+    Employee x[]=new Employee[10];
+    
+    for (int i=0;i<10;i++)
+    {
+    x[i]=new Employee();
+    x[i].getdata();
+    x[i].HRA();
+    x[i].DA();
+    }
+    System.out.print("Name");
+        
+         System.out.print("\tEmpno");
+        
+         System.out.print("\tSalary");
+        
+         System.out.print("\tHRA");
+        
+         System.out.println("\tDA");
+    for (int i=0;i<10;i++)
+    {
+        
+        System.out.print(x[i].n+"\t");
+        System.out.print(x[i].id+"\t");
+        System.out.print(x[i].s+"\t");
+        System.out.print(x[i].HRA+"\t");
+        System.out.print(x[i].DA+"\t");
+    }    
+        
+        
+    
+    }
+    
+}
+
