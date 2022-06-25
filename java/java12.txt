@@ -246,275 +246,415 @@ class bank
 
 
 /*
-PC No:
+PC No: 
 Enrollment No: 
-Faculty Name: RUPAL MAM 
+Faculty Name: Rupal mam
 Student Name : 
-Class : FY IT 
+Class : Sem 2
 Div : B
-Date: 23/04/2022
-Assignment: 3
-Assignment Aim: To learn the Class concept(Use class concept for all programs), Array of objects
-*/
-
-
-import java.util.Scanner;
-/*Name :- 
- *Date :- 5-Feb-2022
- *Program :-1.Create Employee class and write main program to create its objects and do the following:.
-
-Calculate DA, HRA, IT, Gross Salary and Net Salary.
+Date: 06/05/22
+Assignment: 5
+Assignment Aim: Inheritance
  */
 
-/*
- 
- */
-class Employee
-{
-    double s;int id;String n;
-    
-    Employee()
-    {
-    Scanner dis=new Scanner (System.in);
-    System.out.println("Input Name ");
-    n=dis.nextLine();
-    System.out.println("Input  Empno");
-    id=dis.nextInt();
-    System.out.println("Input  Salary");
-    s=dis.nextDouble();
-    
+import java.util.*;
+
+class Designation {
+
+    String desig;
+    private int base;
+    private double oda_per, hra_per;
+
+    Designation(String des) {
+        desig = des;
+        base = 0;
+        oda_per = 0;
+        hra_per = 0;
     }
-            
-    double HRA()
-    {
-      double HRA=(10*s)/100; 
-      return HRA;
+
+    public void setDesig(String s) {
+        switch (s) {
+            case "Manager":
+                base = 50000;
+                oda_per = 5;
+                hra_per = 5;
+                break;
+            case "Supervisor":
+                base = 30000;
+                oda_per = 10;
+                hra_per = 10;
+                break;
+            case "Executive":
+                base = 20000;
+                oda_per = 15;
+                hra_per = 15;
+                break;
+            default:
+                break;
+        }
     }
-    double DA()
-    {
-      double DA=(5*s)/100; 
-      return DA;
+
+    String Desig() {
+        return desig;
     }
-   
+
+    int basicSal() {
+        return base;
+    }
+
+    double oda_per() {
+        return oda_per;
+    }
+
+    double hra_per() {
+        return hra_per;
+    }
+
+    public void putDesigDetails() {
+        System.out.println("Designation: " + desig);
+        System.out.println("Basic Salary: " + base);
+        System.out.println("ODA: " + oda_per);
+        System.out.println("HRA: " + hra_per);
+    }
+
 }
-public class P45 {
 
-    /**
-     * @param args the command line arguments
-     */
+class Employee extends Designation {
+
+    public Employee() {
+        super(null);
+    }
+    public String name, des;
+    public int base, exp;
+    private double da, hra, it, gs, ns;
+
+    public void getData(String n, String dep, int xp) {
+        name = n;
+        des = dep;
+        exp = xp;
+        switch (des) {
+            case "Manager":
+                base = 50000;
+                break;
+            case "Supervisor":
+                base = 30000;
+                break;
+            case "Executive":
+                base = 20000;
+                break;
+            default:
+                break;
+        }
+    }
+
+    public double calc_DA() {
+        double oda = 0;
+        da = 0;
+        switch (des) {
+            case "Manager":
+                oda = 0.3 * base;
+                break;
+            case "Supervisor":
+                oda = 0.2 * base;
+                break;
+            case "Executive":
+                oda = 0.15 * base;
+                break;
+            default:
+                break;
+        }
+        da = oda + (exp * 3);
+        return da;
+    }
+
+    public double calc_HRA() {
+        hra = 0;
+        switch (des) {
+            case "Manager":
+                hra = 0.2 * base;
+                break;
+            case "Supervisor":
+                hra = 0.1 * base;
+                break;
+            case "Executive":
+                hra = 0.5 * base;
+                break;
+            default:
+                break;
+        }
+        return hra;
+    }
+
+    public double calc_GS() {
+        gs = base + da + hra;
+        return gs;
+    }
+
+    public double calc_IT() {
+        it = 0;
+        if (gs > 70000) {
+            it = 0.3 * gs;
+        } else if (gs > 50000 && gs < 69999) {
+            it = 0.2 * gs;
+        } else if (gs > 30000 && gs < 49999) {
+            it = 0.1 * gs;
+        } else {
+            it = 0;
+        }
+        return it;
+    }
+
+    public double calc_ns() {
+        ns = gs - it;
+        return ns;
+    }
+
+    public void putData() {
+        System.out.print(name);
+        System.out.print(" ");
+        System.out.print(des);
+        System.out.print(" ");
+        System.out.print(base);
+        System.out.print(" ");
+        System.out.print(exp);
+        System.out.print(" ");
+        System.out.print(da);
+        System.out.print(" ");
+        System.out.print(hra);
+        System.out.print(" ");
+        System.out.print(it);
+        System.out.print(" ");
+        System.out.print(gs);
+        System.out.print(" ");
+        System.out.print(ns);
+    }
+}
+
+class Executive extends Employee {
+
+    private String assBy, status, delayReason;
+    String task = "Not Assigned";
+    private String assdate, actDate, expDate;
+    Scanner sc = new Scanner(System.in);
+
+    public void assignTask() {
+        System.out.print("Task name: ");
+        String tsk = sc.next();
+
+        System.out.println("Assigned by: ");
+        String temp1 = sc.next();
+
+        System.out.println("Assigned Date: ");
+        String date1 = sc.next();
+
+        System.out.println("Expected Completeion Date: ");
+        sc.nextLine();
+        String date2 = sc.nextLine();
+        task = tsk;
+        assBy = temp1;
+        assdate = date1;
+        expDate = date2;
+
+    }
+
+    public void showUpdateTaskStatus() {
+        System.out.println("");
+        System.out.println("Task Name: " + task);
+        System.out.println("Assigned By: " + assBy);
+        System.out.println("Assign Date: " + assdate);
+        System.out.println("ExpComp Date: " + expDate);
+        System.out.println("");
+        System.out.println("Do you want to update status? (Y/N)");
+        String s1 = sc.next();
+        s1 = s1.toLowerCase();
+        char c = s1.charAt(0);
+        if (c != 'y') {
+            return;
+        }
+        System.out.println("");
+        System.out.println("Select new status");
+        System.out.println("1. Working");
+        System.out.println("2. Suspended");
+        System.out.println("3. Resumed");
+        System.out.println("");
+        int n = sc.nextInt();
+        if (n == 1) {
+            status = "Working";
+        } else if (n == 2) {
+            status = "Suspended";
+        } else if (n == 3) {
+            status = "Resumed";
+        }
+    }
+
+    public void compTask() {
+        task = "Closed";
+        System.out.println("Congratulations the task is closed now.");
+    }
+}
+
+class ManagerTask extends Employee {
+
+    String status, assby, assto;
+    String task = "Not Assigned";
+    Scanner sc = new Scanner(System.in);
+
+    public void assignTask() {
+        System.out.print("Task name: ");
+        String tsk = sc.next();
+        System.out.println("Assigned by: ");
+        String temp1 = sc.next();
+        System.out.println("Assigned to: ");
+        String temp2 = sc.next();
+        task = tsk;
+        assby = temp1;
+        assto = temp2;
+    }
+
+    public void reqTaskStatus() {
+        System.out.println("");
+        System.out.println("Task Name: " + task);
+        System.out.println("");
+        System.out.println("Do you want to update status? (Y/N)");
+        String s1 = sc.next();
+        s1 = s1.toLowerCase();
+        char c = s1.charAt(0);
+        if (c != 'y') {
+            return;
+        }
+        System.out.println("");
+        System.out.println("Select new status");
+        System.out.println("1. Working");
+        System.out.println("2. Suspended");
+        System.out.println("3. Resumed");
+        System.out.println("4. Completed");
+        System.out.println("");
+        int n = sc.nextInt();
+        if (n == 1) {
+            status = "Working";
+        } else if (n == 2) {
+            status = "Suspended";
+        } else if (n == 3) {
+            status = "Resumed";
+        } else if (n == 4) {
+            status = "Completed";
+        }
+    }
+
+    public void compTask() {
+        task = "Closed";
+        System.out.println("Congratulations the task is closed now.");
+    }
+}
+
+public class april_29 {
+
+    public static void mngOperation(ManagerTask m) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("");
+        System.out.println("Choose the operation (ManagerTask)");
+        System.out.println("");
+        System.out.println("1. Assign Task");
+        System.out.println("2. Show Task Status");
+        System.out.println("3. Close Task");
+        System.out.println("Else. End the program");
+        System.out.println("________________________");
+        System.out.println("");
+        int n1 = sc.nextInt();
+        if (n1 == 1) {
+            m.assignTask();
+        } else if (n1 == 2) {
+            m.reqTaskStatus();
+        } else if (n1 == 3) {
+            m.compTask();
+        } else {
+            return;
+        }
+        mngOperation(m);
+    }
+
+    public static void operation(Executive[] s2) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("");
+        System.out.println("Choose the operation");
+        System.out.println("");
+        System.out.println("1. Assign Task");
+        System.out.println("2. Show Task Status");
+        System.out.println("3. Close Task");
+        System.out.println("________________________");
+        System.out.println("");
+        int n1 = sc.nextInt();
+        if (n1 == 3) {
+            return;
+        }
+        System.out.println("");
+        System.out.println("________________________");
+        System.out.println("");
+
+        System.out.println("Choose Employee");
+        for (int i = 5; i < s2.length; i++) {
+            System.out.println(s2[i].name + "  " + s2[i].task);
+        }
+        System.out.println("________________________");
+        System.out.println("");
+        int n2 = sc.nextInt();
+        System.out.println("");
+        if (n1 == 1) {
+            s2[n2 + 4].assignTask();
+            System.out.println("Thank You");
+            System.out.println(s2[n2 + 4].name + " has been assigned the task: " + s2[n2 + 4].task);
+            System.out.println("");
+        } else if (n1 == 2) {
+            s2[n2 + 4].showUpdateTaskStatus();
+        } else if (n1 == 3) {
+            s2[n2 + 4].compTask();
+        } else {
+            return;
+        }
+        operation(s2);
+    }
+
     public static void main(String[] args) {
-    
-     
-    double HRA,DA,PF;
-    
-   
-    Employee x=new Employee();
-    HRA=x.HRA();
-    DA=x.DA();
-    
-        System.out.print("Name:");
-        
-         System.out.print("\tEmpno:");
-        
-         System.out.print("\tSalary:");
-        
-         System.out.print("\tHRA:");
-        
-         System.out.println("\tDA:");
-        System.out.print(x.n+"\t");
-        System.out.print(x.id+"\t");
-        System.out.print(x.s+"\t");
-        System.out.print(HRA+"\t");
-        System.out.print(DA+"\t");
-        
-        
-        
-    
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Designation: ");
+        String s12 = sc.next();
+        Designation s1 = new Designation(s12);
+        s1.setDesig(s12);
+        System.out.println(s1.Desig());
+        System.out.println(s1.basicSal());
+        System.out.println(s1.oda_per());
+        System.out.println(s1.hra_per());
+        s1.putDesigDetails();
+        Employee one = new Employee();
+        String name = sc.next();
+        String des = sc.next();
+        int exp = sc.nextInt();
+        one.putData();
+        double da = one.calc_DA();
+        double hra = one.calc_HRA();
+        double gs = one.calc_GS();
+        double it = one.calc_IT();
+        double ns = one.calc_ns();
+
+        // Moderate
+        Executive[] s2 = new Executive[10];
+        for (int i = 0; i < s2.length; i++) {
+            s2[i] = new Executive();
+            if (i < 2) {
+                s2[i].getData("Mng", "Manager", i);
+            } else if (i >= 2 && i < 5) {
+                s2[i].getData("Sup", "Supervisor", i);
+            }
+        }
+        s2[5].getData("exe1", "Executive", 5);
+        s2[6].getData("exe2", "Executive", 6);
+        s2[7].getData("exe3", "Executive", 7);
+        s2[8].getData("exe4", "Executive", 8);
+        s2[9].getData("exe5", "Executive", 9);
+        operation(s2);
+
+        //Advanced
+        ManagerTask m1 = new ManagerTask();
+        mngOperation(m1);
     }
-    
 }
-
-
-
-/*-------------------------------------------------------------------------------------------------------------------------------------------*/
-
-import java.util.Scanner;
-/*Name :- 
- *Date :- 5-Feb-2022
- *Program :-Write a java program to input employee details (Name, Empno, Salary). Calculate the
-HRA (10% of Salary), DA (5% of Salary) and deduct PF=100 from salary.Â  Display all
-information in proper format.
- */
-
-/*
- 
- */
-class Employee
-{
-    double s;int id;String n;double HRA;double DA;
-    Employee()
-    {
-        n="yourname";
-        s=0;
-
-        DA=0;
-        HRA=0;
-
-
-    }
-    void getdata()
-    {
-    Scanner dis=new Scanner (System.in);
-    System.out.println("Input Name ");
-    n=dis.nextLine();
-    System.out.println("Input  Empno");
-    id=dis.nextInt();
-    System.out.println("Input  Salary");
-    s=dis.nextDouble();
-    
-    }
-            
-    double HRA()
-    {
-      HRA=(10*s)/100; 
-      return HRA;
-    }
-    double DA()
-    {
-     DA=(5*s)/100; 
-      return DA;
-    }
-   
-}
-public class P45 {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-    
-     
-    double HRA,DA,PF;
-    
-   
-    Employee x=new Employee();
-    x.getdata();
-    HRA=x.HRA();
-    DA=x.DA();
-    
-        System.out.print("Name:");
-        
-         System.out.print("\tEmpno:");
-        
-         System.out.print("\tSalary:");
-        
-         System.out.print("\tHRA:");
-        
-         System.out.println("\tDA:");
-        System.out.print(x.n+"\t");
-        System.out.print(x.id+"\t");
-        System.out.print(x.s+"\t");
-        System.out.print(HRA+"\t");
-        System.out.print(DA+"\t");
-        
-        
-        
-    
-    }
-    
-}
-
-
-
-
-/*----------------------------------------------------------------------------------------------------------*/
-
-import java.util.Scanner;
-/*Name :- 
- *Date :- 5-Feb-2022
- *Program :-Write a java program to input employee details (Name, Empno, Salary). Calculate the
-HRA (10% of Salary), DA (5% of Salary) and deduct PF=100 from salary.Â  Display all
-information in proper format.
- */
-
-/*
- 
- */
-class Employee
-{
-    double s;int id;String n;double HRA;double DA;
-    Employee()
-    {
-        n="yourname";
-        s=0;
-
-        DA=0;
-        HRA=0;
-
-
-    }
-    void getdata()
-    {
-    Scanner dis=new Scanner (System.in);
-    System.out.println("Input Name ");
-    n=dis.nextLine();
-    System.out.println("Input  Empno");
-    id=dis.nextInt();
-    System.out.println("Input  Salary");
-    s=dis.nextDouble();
-    
-    }
-            
-    void HRA()
-    {
-      HRA=(10*s)/100; 
-      
-    }
-    void DA()
-    {
-     DA=(5*s)/100; 
-      
-    }
-   
-}
-public class P45 {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) 
-    {
-    Employee x[]=new Employee[10];
-    
-    for (int i=0;i<10;i++)
-    {
-    x[i]=new Employee();
-    x[i].getdata();
-    x[i].HRA();
-    x[i].DA();
-    }
-    System.out.print("Name");
-        
-         System.out.print("\tEmpno");
-        
-         System.out.print("\tSalary");
-        
-         System.out.print("\tHRA");
-        
-         System.out.println("\tDA");
-    for (int i=0;i<10;i++)
-    {
-        
-        System.out.print(x[i].n+"\t");
-        System.out.print(x[i].id+"\t");
-        System.out.print(x[i].s+"\t");
-        System.out.print(x[i].HRA+"\t");
-        System.out.print(x[i].DA+"\t");
-    }    
-        
-        
-    
-    }
-    
-}
-
