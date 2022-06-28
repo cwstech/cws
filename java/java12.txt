@@ -1,233 +1,163 @@
 -----------------------------------------------------------EVEN NO---------------------------------------------------------------
 import java.util.*;
 
-class customer
-{
-    int n=3;
-    protected String name[]= new String[n];
-    protected int age[]= new int[n];
-    protected long contact[]= new long[n];
-    customer ()
-    {
-        for (int i=0;i<n; i++)
-        {
-            name[i]= "";
-            age[i] = 0;
-            contact[i] = 0;
-        }
-    }
-    public void getCustomers(int x)
-    {
-        Scanner sc= new Scanner(System.in);
+class Customer {
+
+    private String name, contact;
+    public int age;
+
+    public void getCustomers() {
         System.out.println("Welcome! Enter following details: ");
-        int i=x;
-        do
-        {
-            System.out.print("Name"+(i+1)+": ");
-            name[i]= sc.nextLine();
-            System.out.print("Age"+(i+1)+": ");
-            age[i] = sc.nextInt();
-            System.out.print("Contact"+(i+1)+": ");
-            contact[i] = sc.nextLong();
-        }
-        while(i<x);
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter your name:= ");
+        name = sc.nextLine();
+        System.out.println("Enter your contactNumber:= ");
+        contact = sc.nextLine();
+        System.out.println("Enter your age:= ");
+        age = sc.nextInt();
     }
-    public void showCustomers()
-    {
-        System.out.println("Name\t Age\t Contact\tAccount NO\tBalance");
+
+    String rb() {
+        return name;
     }
+
+    String num() {
+        return contact;
+    }
+
 }
 
-class account extends customer
-{
-    protected long accno[]= new long[n];
-    protected double bal[]= new double[n];
-    protected long wdaccno;
-    protected double wdamt;
-    protected long dpaccno;
-    protected double dpamt;
-    protected long acc1;
-    protected long acc2;
-    protected double amt;
-    account()
-    {
-        for (int i=0; i<n; i++)
-        {
-            accno[i] = 0;
-            bal[i] = 0;
+class account extends Customer {
+
+    int acc, bal;
+    int bale;
+    int dep;
+
+    public void deposit() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter Your Acc");
+        int dacc = sc.nextInt();
+        System.out.println("Enter Deposit amt:= ");
+        dep = sc.nextInt();
+        if (dacc != acc) {
+            System.out.println("Plase enter rigth AccNo");
+        } else {
+            int deposit = bale + dep;
+            System.out.println("Your total amount is:= " + deposit);
         }
+
     }
-    public void getdetails(int x)
-    {
-        Scanner sc= new Scanner(System.in);
-        int i=x;
-        do
-        {
-            System.out.print("Enter Account Number"+(i+1)+": ");
-            accno [i]= sc.nextLong();
-            System.out.print("Balance"+(i+1)+": ");
-            bal[i] = sc.nextDouble();
+
+    public void withdraw() {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter Your Acc");
+        int wacc = sc.nextInt();
+        System.out.println("Enter withdraw amt:= ");
+        bal = sc.nextInt();
+        if (wacc != acc) {
+            System.out.println("Plase enter rigth AccNo");
+        } else if (bale == 0) {
+            System.out.println("Your amount is 0");
+        } else {
+            int sub = bale - bal;
+            System.out.println("Your total amm is:= " + sub);
         }
-        while (i<x);
+
     }
-    public void putdetails(int x)
-    {
-        int i=x;
-        do
-        {
-            System.out.println(name[i]+ "\t " +age[i]+ "\t " +contact[i]+ "\t" +accno[i]+ "\t" +bal[i]);
+
+    public void transfer() {
+        int baless = 0, baless1 = 0;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter Your Acc");
+        int send_acc = sc.nextInt();
+        int rec_acc = sc.nextInt();
+        System.out.println("Enter Transfer amt:= ");
+        bal = sc.nextInt();
+
+        if (send_acc != acc) {
+            if (rec_acc != acc) {
+                System.out.println("Dont mathch accNo");
+            }
+        } else {
+            baless = bale - bal;
+            baless1 = bale + bal;
         }
-        while (i<x);
+        System.out.println("sender account amount is:- " + baless);
+        System.out.println("ricever account amount is:- " + baless1);
     }
-    public void deposit()
-    {
-        Scanner sc= new Scanner(System.in);
-        System.out.print("Enter Account NO for deposit: ");
-        dpaccno= sc.nextLong();
-        for (int i=0; i<n; i++)
-        {
-            if (dpaccno == accno[i])
-            {
-                System.out.print("Enter the amount you wish to deposit: ");
-                dpamt = sc.nextDouble();
-                    bal[i] = bal[i] + dpamt;
-                    System.out.println("Transaction Successful!");
-                    System.out.println("Current Balance: " + bal[i]);
+
+    public void getAcc() {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter AccNo:= ");
+        acc = sc.nextInt();
+        System.out.println("EnterYour Bal:= ");
+        bale = sc.nextInt();
+    }
+
+    public void dispaly() {
+        System.out.println(rb() + "\t " + num() + " \t" + age + "\t" + acc + "\t" + bale);
+        Scanner sc = new Scanner(System.in);
+
+    }
+
+    void process() {
+        int a;
+        do {
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Do you want to withdraw enter[1] for withdraw procedure and enter[2] for deposit procedure and enter[3] for transfer procedure and enter [4] for exit the code");
+            a = sc.nextInt();
+
+            switch (a) {
+                case 1:
+                    withdraw();
+                    break;
+                case 2:
+                    deposit();
+                    break;
+                case 3:
+                    transfer();
+                    break;
+                case 4:
+                    System.out.println("thank you");
+                    break;
+                default:
                     break;
             }
-            else if (i== n-1 && wdaccno!= accno[i])
-            {
-                System.out.println("Account not found!");
-                break;
-            }
-        }
-    }
-
-    public void withdraw()
-    {
-        Scanner sc= new Scanner(System.in);
-        System.out.print("Enter Account NO for withdrawal: ");
-        wdaccno= sc.nextLong();
-        for (int i=0; i<n; i++)
+        } while (a != 4);
         {
-            if (wdaccno == accno[i])
-            {
-                System.out.print("Enter the amount you wish to withdraw: ");
-                wdamt = sc.nextDouble();
-                if (bal[i] > 0 && wdamt < bal[i])
-                {
-                    bal[i] = bal[i] - wdamt;
-                    System.out.println("Transaction Successful!");
-                    System.out.println("Current Balance: " + bal[i]);
-                }
-                else
-                {
-                    System.out.print("Sorry! You dont have sufficient balance in your account");
-                }
-                break;
-            }
-            else if (i== n-1 && wdaccno!= accno[i])
-            {
-                System.out.println("Account not found!");
-                break;
-            }
 
         }
     }
 
-    public void transfer()
-    {
-        Scanner sc= new Scanner(System.in);
-        System.out.print("Enter Acc.no from which you want to transfer: ");
-        acc1= sc.nextLong();
-        for (int i=0; i<n; i++)
-        {
-          if (acc1== accno[i])
-          {
-              System.out.print("Enter Acc.no to which you want to transfer: ");
-              acc2= sc.nextLong();
-              for (int j=0; j<n; j++)
-              {
-                  if (acc2== accno[j])
-                  {
-                      System.out.println("Receiver's account found");
-                      System.out.print("Enter Transfer Amount: ");
-                      amt = sc.nextDouble();
-                      if (amt < bal[i])
-                      {
-                          bal[i]= bal[i]- amt;
-                          bal[j]= bal[j]+amt;
-                          System.out.println("Transaction Successful!");
-                          System.out.println("Current Balance of accounts");
-                          System.out.println("Account no\tBalance");
-                          System.out.println(+acc1+"\t\t"+bal[i]);
-                          System.out.println(+acc2+"\t\t"+bal[j]);
-                      }
-                      else
-                      {
-                          System.out.println("Insufficient balance!");
-                      }
-                      break;
-                  }
-                  else if (i== n-1 && acc2!= accno[j])
-                  {
-                      System.out.println("Receiver's account not found!");
-                      break;
-                  }
-              }
-              break;
-          }
-          else if (i== n-1 && acc1!= accno[i])
-          {
-              System.out.println("Account not found!");
-              break;
-          }
-        }
-    }
 }
 
-class bank
-{
-    public static void main(String[] args)
-    {
-       int n=3;
-       Scanner sc= new Scanner(System.in);
-         account a= new account();
-         for (int i=0; i<n; i++)
-         {
-             a.getCustomers(i);
-             a.getdetails(i);
-         }
-         System.out.println("Name\t Age\t Contact\tAccount NO\tBalance");
-         for (int i=0; i<n; i++)
-         {
-             a.putdetails(i);
-         }
-         int c;
-         do {
-        System.out.println("Choose an option");
-        System.out.println("1 --> Withdraw Money\n2 --> Deposit Money\n3 --> Transfer Money\n4 --> EXIT");
-        c= sc.nextInt();
-         switch (c)
-         {  
-             case 1:   
-             a.withdraw();
-             break;
-             case 2:
-             a.deposit();
-             break;
-             case 3:
-             a.transfer();
-             break;
-             case 4:
-             System.out.println("Thankyou for Visiting!");
-             break;
-             default:
-             System.out.println("Please select an appropriate choice!");    
-         } 
-         } while (c!=4);
+public class MENU {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter number of menu:= ");
+        int n = sc.nextInt();
+
+        account menu[] = new account[n];
+
+        for (int i = 0; i < n; i++) {
+            menu[i] = new account();
+            menu[i].getCustomers();
+            menu[i].getAcc();
+        }
+        System.out.println("Name \t Contact\t Age \t acc \t bale");
+        for (int i = 0; i < n; i++) {
+            menu[i].dispaly();
+        }
+
+        for (int i = 0; i < n; i++) {
+            menu[i].process();
+        }
 
     }
+
 }
 
 
